@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<!-- Primary Meta Tags -->
+<title>Private Development Notes | Dark Tech Blog</title>
+<meta name="title" content="Private Development Notes | Dark Tech Blog">
+<meta name="description" content="This article contains private development notes and is password protected.">
+
+<meta name="keywords" content="Private, Notes">
+
+<meta name="author" content="Tech Blogger">
+<meta name="robots" content="index, follow">
+<meta name="language" content="zh-CN">
+<link rel="canonical" href="http://example.com/2025/12/23/private-notes/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://example.com/2025/12/23/private-notes/">
+<meta property="og:title" content="Private Development Notes | Dark Tech Blog">
+<meta property="og:description" content="This article contains private development notes and is password protected.">
+
+<meta property="og:site_name" content="Dark Tech Blog">
+<meta property="og:locale" content="zh_CN">
+
+  
+<meta property="article:published_time" content="2025-12-23T10:00:00.000Z">
+  
+  
+<meta property="article:modified_time" content="2025-12-30T09:05:07.053Z">
+  
+  
+<meta property="article:author" content="Tech Blogger">
+  
+  
+    
+<meta property="article:section" content="Personal">
+    
+  
+  
+    
+<meta property="article:tag" content="Private">
+    
+<meta property="article:tag" content="Notes">
+    
+  
+
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://example.com/2025/12/23/private-notes/">
+<meta name="twitter:title" content="Private Development Notes | Dark Tech Blog">
+<meta name="twitter:description" content="This article contains private development notes and is password protected.">
+
+
+
+
+<!-- Favicon -->
+
+  <link rel="icon" href="/favicon.ico">
+
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- Font Awesome 6.4.0 with optimized loading -->
+
+  <!-- Hybrid: CDN with local fallback and optimized loading -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous"
+        onerror="this.onerror=null;this.href='/lib/fontawesome/css/all.min.css';this.rel='stylesheet';">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+
+
+<!-- Preconnect for performance -->
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+
+{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;BlogPosting&#34;,&#34;headline&#34;:&#34;Private Development Notes&#34;,&#34;name&#34;:&#34;Private Development Notes | Dark Tech Blog&#34;,&#34;description&#34;:&#34;This article contains private development notes and is password protected.&#34;,&#34;url&#34;:&#34;http://example.com/2025/12/23/private-notes/&#34;,&#34;inLanguage&#34;:&#34;zh-CN&#34;,&#34;author&#34;:{&#34;@type&#34;:&#34;Person&#34;,&#34;name&#34;:&#34;Tech Blogger&#34;},&#34;datePublished&#34;:&#34;2025-12-23T10:00:00.000Z&#34;,&#34;dateModified&#34;:&#34;2025-12-30T09:05:07.053Z&#34;,&#34;publisher&#34;:{&#34;@type&#34;:&#34;Organization&#34;,&#34;name&#34;:&#34;Dark Tech Blog&#34;,&#34;logo&#34;:{&#34;@type&#34;:&#34;ImageObject&#34;,&#34;url&#34;:&#34;http://example.com/favicon.ico&#34;}},&#34;articleSection&#34;:[&#34;Personal&#34;],&#34;keywords&#34;:&#34;Private, Notes&#34;,&#34;mainEntityOfPage&#34;:{&#34;@type&#34;:&#34;WebPage&#34;,&#34;@id&#34;:&#34;http://example.com/2025/12/23/private-notes/&#34;}}
+</script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class=" is-post">
+  <div id="container" class="site-container">
+    <header id="header" class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Site Branding -->
+      <div class="site-branding">
+        
+          <p class="site-title">
+            <a href="/" rel="home">Dark Tech Blog</a>
+          </p>
+        
+        
+          <p class="site-subtitle">探索技术的深度与广度</p>
+        
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="切换菜单" aria-expanded="false">
+        <span class="hamburger-icon">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
+      
+      <!-- Main Navigation -->
+      <nav id="main-nav" class="main-nav" role="navigation" aria-label="主导航">
+        <ul class="nav-menu">
+          
+            
+            <li class="nav-item active">
+              <a class="nav-link" href="/">
+                
+                  <i class="fas fa-home nav-icon"></i>
+                
+                <span class="nav-text">Home</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/archives">
+                
+                  <i class="fas fa-archive nav-icon"></i>
+                
+                <span class="nav-text">Archives</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/categories">
+                
+                  <i class="fas fa-folder nav-icon"></i>
+                
+                <span class="nav-text">Categories</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/tags">
+                
+                  <i class="fas fa-tags nav-icon"></i>
+                
+                <span class="nav-text">Tags</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/about">
+                
+                  <i class="fas fa-user nav-icon"></i>
+                
+                <span class="nav-text">About</span>
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+      
+      <!-- Search Form -->
+      
+        <div class="header-search">
+          <button id="search-toggle" class="search-toggle" aria-label="切换搜索">
+            <i class="fas fa-search"></i>
+          </button>
+          <div id="search-form-wrap" class="search-form-wrap">
+            <form class="search-form" role="search">
+              <label for="search-input" class="sr-only">搜索</label>
+              <input type="search" 
+                     id="search-input" 
+                     class="search-input" 
+                     placeholder="搜索文章..."
+                     autocomplete="off">
+              <button type="submit" class="search-submit" aria-label="搜索">
+                <i class="fas fa-search"></i>
+              </button>
+              <button type="button" class="search-close" aria-label="关闭搜索">
+                <i class="fas fa-times"></i>
+              </button>
+            </form>
+            <div id="search-results" class="search-results"></div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</header>
+
+    
+    <main id="main" class="site-main">
+      <div class="container">
+        
+        <div class="main-content-wrapper has-sidebar sidebar-right">
+          <div id="content" class="site-content">
+            <article class="article" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      
+        <i class="fas fa-lock post-encrypted-icon" title="加密文章"></i>
+      
+      Private Development Notes
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      <time class="article-date" datetime="2025-12-23T10:00:00.000Z" itemprop="datePublished">
+  <i class="fa fa-calendar"></i>
+  2025年12月23日
+</time>
+
+      
+        
+
+  <span class="article-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <i class="fas fa-user"></i>
+    <span itemprop="name">Tech Blogger</span>
+  </span>
+
+
+      
+      
+  <div class="article-category">
+    <i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Personal/">Personal</a>
+  </div>
+
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误，请重试。" data-whm="文章校验失败，请联系作者。">
+  <script id="hbeData" type="hbeData" data-hmacdigest="def9f34160f6866d32590786f5453f21d3ea1bd3251f46a92e7cd6aa08ccfe1a">8a7bdcab222f091a8d8538c88d2e673a7ea8423afdbff72a541fae52dd99d9426d18af21e7fd3df9ea9ed9fa090e9689f8f32d8e3dafb083c20548939bcb2953acbd6f9d2649993bd1f23741b1323e6eb4a4557525c6fef3a4b57c3e3508c3ca767f11c1f9ca500b44bd318b7fce14c6416b26177b6a48e55d5132570ca1fbf0d468bfee6f3c1a6626ed178c113b7a4082ffb444060e795e7a3cefc2227302d93b323b0582617f1849c4ab8fa8a3ed60e157d2191514f9d3c67a91d66288568a6f6210ce951d6e2d9cdc41bac7ab23f72424c913fd6355a4c24ee3874bb0648b3f3fa7f17b2a3268972458ba1d5143e6078a15520a2dfac61aac758f0f5dfd620c45475c7921c2abec7f6fc598442f390c119e3995f88904e348ae5cb25b5eaec58b25b7cc61e5da24ba16ec70256241dde732f314007eaba4480b2436123eaa1275a65f0084ea3a5fd42dfd444655ddc0a85e602972a55d8a657e743f31c8277a59ee5a5dd99268635ce263028f9ca489715691672488d5609d665359058843b9ceffc6635aa1fcac8bb89fa4b9b702e3f75f4b48af9ab7ce619297dbbdeaa2a0882b5d0d538618accddccd9beac8665acb3b8d147c20b3815a2072e088f090545f48c1ff979eb88844d43e0778db544c5cfb3cb8dbde893afb67f7cb925a03a5e6baba42212e0910f75382712742bb99f960bad4d14ba91647bbb3af27fd40e837b834b9a92bc4026c4257d5401542a8f576d5f9873dbd26ae8874a43aa23119f1457fb17dbfbfb5bd0846db8293c057f5fb6475dc16c7438b02a3c03308b529f806940a59200fd2be3434c9056b2f1ba2f764daf4738036ca137eda840905be90538928d6fbb5b7770582ec287bd5ce8854d533bfeed709743d94f9c881e45bc73a44f9e6ff9765fb731541d46071bf25c0d375f9d67f2df988edc8e5beb4bf4b6140e3512a18ceceddc7c893b386dfbed9fb57e6bd05eda69a9e578b4f122ab21f57131298db505627abd0a7661d774bab3201cb88bec863b7f0f4d8e6f95ac5a53bce3b90a63ab8a0876ac2ff7331a7a671d11c9014fb26792164322159fc234087bb7a90b8d3a29cc881859fe93efbb0db68ea85cff62ceafdabf59d8a8b1cb5b2373439f402e080f018a2fdc4352da164c2da4decb4a574bf006cf726f5a420e6e116363c04cc211b9cd9622aea3993f6487749f0541e8b4f03b5f0d240514e546bd9c08175a68cf559c0ad9a388eec79029b130b0a02be1f391521633f4fc9df54ae64842a2223fa4a0077cff66957aca7ad95921fe96f44bf4d29edc6151d66960fc176b62f223828cceb1d4a4444ea31ff90c28bebb5d22abb6004fbb95bd39a659406cc84dee7b6c9477cdddd67d7b2131d4586080a0fb80b442da1796d40af73ea291f79497f14dfb8f7d09d117ccb00ccf1967865e59cef782d0153b750acbb81238dec5447a8c357f0d113440b043cb51a663050e92375808e0d24db7efbc1528093e9da14bfd7a86b11b109854332c15c8a32fcb1e4136bd34fc4f4ad9293b19f5fea5bfde7b36da049700f3466c0ec005844f0b9a34f6d569a02ff5321428a2d0d6bcf2b969b488410b0e8ffc64b1e364aa02fea225a4d87da0be083a57304112af39e423b0290b102f2964b449405e0f489029f5ddc419cfff320d243d5b6a687ba55f2e53f9b8803c05e7989a9c7faaf2056bcbffab8c71417aae51341762591161803a24168da93ee0652c8343617546b96a00a0398e688ff6b3e2e53117a9a93aead64bf19773a7bb71b21a2bbd57d05f2fc0dafaf746a95c6ff72dab9e17632505589db20c871ca4c042a86a0d22518a38b87d283c2e9fa73e69f8e0250cfc37cbb0e2fcf9e0789a52a050eddb39c07e7a405b2bdae454b2f0442095daee603435f542338e443c29cf2e054102e15b0e4b92e553a0b104fb664fe810a124e0d98fc48d790d05dc484dfb4d032fd45fe4669072d833611aed0b816d093b8d202b47de1f57555c449de1a3ec5e4a869f02a7b1d87b08cfcd3ac9906403ec0baa235db8fdea5836d038e4291e980932d6fdcea5999a0d02e80c4f9a316ce1ec373f0cbc367d8088c43a9e2acf31c12ffb179b9692d816f629c40db620f6ef7dcc6051cf624301f3b48a5f3cbb3f8f556d9374661417e892a2edf910a272a0047d23fc98e1fe3c66a92403a42099654046ae101a71361977298c82415c22fc5eb8334cde3a9291edfa495fe3f25fd1d561bf66581583428f77e8f98dee7d434f41f574233f22a8d420963c811e9fa65e54b28c6d2b6e03aa6127c54c24406a3470554f4b21ab74d7c1f881cd6c80005cca06469c2733684393082c578e06809d55f6cc7fbda28a9d747b66602dc83fa55574521e2dc169518f5cc6d3bf24cc1db8b4418feeb20344117214d87e5eeb37590cc6cb4492c68e2c78357d2215627a8c07e56cc6120ea0088c57e4ec929cce2630c2e2b508688c00940a44a0728acc30527524510a0b511f8b5b1ab22b12f43e6abe307a39fe22212ad73552b6a77babb7bd029ea69e41afe98a46b3326d73bdaa6a52216ef05d7106f0eb8b0e59ab3dad2ad75c9431449d76216f578bbaf26474a6c62ae5f278654159bf9315473ca1a52a63ddb09a6c71af96a5f57d08a7cdd612896e7d4eeee78446e0f224231619b80ffab8be077ffb98076d9285cce4451b0b9f8953b5f0f893d4330a4586b345d4fe61b382bc80e577876aa80384b0a0876528801cf55082af0ac40df1bb0a366853507ee55b5df8ab92cb6926db90cd9ab60d28e7623dbbf145a6bc77d05e4bb0042fe65aa3324dd76ab53b37f35a294ec4548804ae07bcb577a418e0bab3ac59eac44762530d4c8a99b737939cc4f49c257dbfa00f365558659336a034ea88d355405a7fc0d1ff848b9680f5c1865d63ed31b201f5bd7a9d17205b6bb456dd262121d58863486438f88f0d590a2c9617cd0e356a18aed67b66437725559200f2b318849fd649c5fc9256cadb7488f4125db685ee59300d3a25a1ceee8ec34a71aab9046194133f21b426d13416f69c246e8a33eb34b494809a44aacf271b2f996d649c409fe88e3b554823b53d1a943f4fed274ffa420c8e791080a8d00742577f9367fae9a13e8e6ebf0bb16764c95dc402c5f8225847d2998f1b542f7d7912447a3d31601400037c023cb8a0d755305b2ce364aed9ab8790c800ec66aaee80ab82609d6f549a6a6fedb7e0b952f61149b328010713382561f12516f14e609d9c10b6ac8c62e4307e66ea684ad9427b4c67fc342b54d9345ad4721e31cc17f5b3e46aaee292a1ebe2eb3c51c70eae727bacfa47f44d09e42250053045dbf481e72e0838d74bcbf71d3584aa0ade9b0552f03a6df517bd9bad655effe0afdd555ee4a757723eaec80c632ae4a36523aae736864e7978eee2970fbb2e9448019d69dcd83a78d7979c1afb46bd4b7208f2c9f7138d946a349878b9fd1545874a37a8cb6869c7388997840c254dbc0a21b1f3231e4e01aad8932a771030de1796f736b4e5c331e4b1292e4bd86cdb3cdfc780f71403d9878f92313fbd887975d7fa459903f7abc06fbe49ae91b6e0955500907aa65241d7bcaf318187af0ee56c0d5518c690dee32f296311d4beaca2b66e7fe39ff292c9ca59d6ddfe4187ca660d8b06c971f13c009f5c509464e4a1d3502897e94637b36ddeec405fff1912dd7273add5173d71c2aaeee0f494992e89abc13d705b54cdfa7e7a659e7b875bf15317e801960b32460c3954a99d396c161d354df8ab350bec5aba526e8f96bc4b483366af63418b6653eaf59788311ceaecc3f09f30befe14c694fe7f76e1867439b0fe239255640db95bb040931f7005380baf454689e8397967c67f4338b2c74a7746bfb1120faac124d677bbe8126c578af4b00a0f8fcb449cd4b129587ceb2cf9b418ae1c43919febb42e5c81b489b5c736e1ce2123ad1875419ac9491d20c72650378f088c8c1f622bdd776387284c6791597cebdeb9cb04482ef1e77d12642eb20d9e13cf3c5bc0ce71377df6c579cad0f07bcb57931c412b7b2871f753c1f6b8c6129fd3d47a60deff4ca68ac904032da6c2a70aa3f60941c427ae9abe7fa883e7956bc47ef5d7b9cb1b88a2400e6257b0d67931b3aec27acd4cded55231281d5ede4cf4330dd2b1ae405d76be22892e322d648353ffead98dfc00231826afd5f7ce5c4841614f1486b4817b09000ba1baffa2a17fd3220946a22e05211f1d97a3b06d6d0476c69eee0eb4e28a12c53be1fc332622956b0d47fa91dd8e2dc9e4500ed15fa63720d7817039a05aa5e4f4e27fad7ec50ea394fd4f33518fc7a2034b68bbbcd03b97421b909eca8b2d174d75837a333c964496f2464feaf97050a4ca947fbb0a4049110fd4fe9600009a8ae3b83cc</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Please enter the password to view this content.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+      
+    </div>
+    <footer class="article-footer">
+      
+  <div class="article-tags">
+    <i class="fa fa-tags"></i>
+    <a class="article-tag-none-link" href="/tags/Notes/" rel="tag">Notes</a> <a class="article-tag-none-link" href="/tags/Private/" rel="tag">Private</a>
+  </div>
+
+
+      
+        <div class="article-taxonomy">
+          
+            <div class="article-categories-list">
+              <i class="fas fa-folder"></i>
+              <span class="taxonomy-label">分类:</span>
+              
+                <a href="/categories/Personal/" class="category-link">Personal</a>
+              
+            </div>
+          
+          
+            <div class="article-tags-list">
+              <i class="fas fa-tags"></i>
+              <span class="taxonomy-label">标签:</span>
+              
+                <a href="/tags/Private/" class="tag-link">Private</a><span class="separator">,</span>
+              
+                <a href="/tags/Notes/" class="tag-link">Notes</a>
+              
+            </div>
+          
+        </div>
+      
+    </footer>
+  </div>
+  
+    
+  <nav id="article-nav" class="article-nav">
+    
+      <a href="/2025/12/24/git-workflow-tips/" class="article-nav-link article-nav-newer">
+        <span class="article-nav-icon">
+          <i class="fas fa-chevron-left"></i>
+        </span>
+        <span class="article-nav-content">
+          <span class="article-nav-caption">上一篇</span>
+          <span class="article-nav-title">
+            
+              Git Workflow Tips and Tricks
+            
+          </span>
+        </span>
+      </a>
+    
+    
+      <a href="/2025/12/22/database-optimization-techniques/" class="article-nav-link article-nav-older">
+        <span class="article-nav-content">
+          <span class="article-nav-caption">下一篇</span>
+          <span class="article-nav-title">
+            
+              Database Optimization Techniques
+            
+          </span>
+        </span>
+        <span class="article-nav-icon">
+          <i class="fas fa-chevron-right"></i>
+        </span>
+      </a>
+    
+  </nav>
+
+
+  
+</article>
+
+
+          </div>
+          
+          
+            <aside id="sidebar" class="sidebar">
+  
+    
+      <div class="widget widget-category">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-folder"></i>
+            分类
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="category-list">
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Programming/CSS/">
+                      CSS
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Database/">
+                      Database
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/DevOps/">
+                      DevOps
+                    </a>
+                    <span class="category-list-count">2</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/DevOps/Docker/">
+                      Docker
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Programming/Frontend/">
+                      Frontend
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Getting-Started/">
+                      Getting Started
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Database/Performance/">
+                      Performance
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Personal/">
+                      Personal
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Programming/">
+                      Programming
+                    </a>
+                    <span class="category-list-count">4</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Programming/Python/">
+                      Python
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Security/">
+                      Security
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/DevOps/Version-Control/">
+                      Version Control
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Security/Web-Development/">
+                      Web Development
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">
+                      测试
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+              </ul>
+            
+          </div>
+        
+      </div>
+    
+      <div class="widget widget-tag">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-tags"></i>
+            标签
+          </h3>
+          <div class="widget-content">
+            
+              <div class="tag-cloud">
+                
+                  <a class="tag-cloud-link" href="/tags/Beginner/" 
+                     style="font-size: 14px;">
+                    #Beginner
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Best-Practices/" 
+                     style="font-size: 16px;">
+                    #Best Practices
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/CSS/" 
+                     style="font-size: 14px;">
+                    #CSS
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Containers/" 
+                     style="font-size: 14px;">
+                    #Containers
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Data-Structures/" 
+                     style="font-size: 14px;">
+                    #Data Structures
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Database/" 
+                     style="font-size: 14px;">
+                    #Database
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/DevOps/" 
+                     style="font-size: 14px;">
+                    #DevOps
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Docker/" 
+                     style="font-size: 14px;">
+                    #Docker
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Flexbox/" 
+                     style="font-size: 14px;">
+                    #Flexbox
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Frontend/" 
+                     style="font-size: 14px;">
+                    #Frontend
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Git/" 
+                     style="font-size: 14px;">
+                    #Git
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Hexo/" 
+                     style="font-size: 14px;">
+                    #Hexo
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/JavaScript/" 
+                     style="font-size: 16px;">
+                    #JavaScript
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Layout/" 
+                     style="font-size: 14px;">
+                    #Layout
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Notes/" 
+                     style="font-size: 14px;">
+                    #Notes
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Optimization/" 
+                     style="font-size: 14px;">
+                    #Optimization
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Performance/" 
+                     style="font-size: 14px;">
+                    #Performance
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Private/" 
+                     style="font-size: 14px;">
+                    #Private
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Python/" 
+                     style="font-size: 14px;">
+                    #Python
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/React/" 
+                     style="font-size: 14px;">
+                    #React
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/SQL/" 
+                     style="font-size: 14px;">
+                    #SQL
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Security/" 
+                     style="font-size: 14px;">
+                    #Security
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Tutorial/" 
+                     style="font-size: 20px;">
+                    #Tutorial
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Version-Control/" 
+                     style="font-size: 14px;">
+                    #Version Control
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Web-Development/" 
+                     style="font-size: 18px;">
+                    #Web Development
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/%E5%8A%A0%E5%AF%86/" 
+                     style="font-size: 14px;">
+                    #加密
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/%E6%B5%8B%E8%AF%95/" 
+                     style="font-size: 14px;">
+                    #测试
+                  </a>
+                
+              </div>
+            
+          </div>
+        
+      </div>
+    
+      <div class="widget widget-archive">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-archive"></i>
+            archives
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="archive-list">
+                
+                
+                  
+                  <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archives/2025/12">
+                      2025/12
+                    </a>
+                    <span class="archive-list-count">11</span>
+                  </li>
+                
+              </ul>
+              <a class="archive-all-link" href="/archives">
+                查看全部 <i class="fas fa-arrow-right"></i>
+              </a>
+            
+          </div>
+        
+      </div>
+    
+      <div class="widget widget-recent_posts">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-clock"></i>
+            最新文章
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="recent-posts-list">
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/30/encrypted-test-post/">
+                      
+                        <i class="fas fa-lock" title="已加密"></i>
+                      
+                      加密测试文章
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-30T04:00:00.000Z">
+                      12-30
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/30/hello-world/">
+                      
+                      Hello World
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-30T02:00:00.000Z">
+                      12-30
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/29/javascript-basics/">
+                      
+                      JavaScript Basics
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-29T06:30:00.000Z">
+                      12-29
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/28/python-data-structures/">
+                      
+                      Python Data Structures Guide
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-28T02:00:00.000Z">
+                      12-28
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/28/css-flexbox-guide/">
+                      
+                      CSS Flexbox Guide
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-28T01:15:00.000Z">
+                      12-28
+                    </time>
+                  </li>
+                
+              </ul>
+            
+          </div>
+        
+      </div>
+    
+  
+</aside>
+
+          
+        </div>
+      </div>
+    </main>
+    
+    <footer id="footer" class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Footer Info Section -->
+      <div class="footer-section footer-info">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">Dark Tech Blog</a>
+          
+            <p class="footer-description">一个专注于技术分享的个人博客，涵盖前端开发、后端架构、DevOps 和软件工程最佳实践。</p>
+          
+        </div>
+      </div>
+      
+      <!-- Footer Links Section -->
+      <div class="footer-section footer-links">
+        <h4 class="footer-title">快速链接</h4>
+        <ul class="footer-menu">
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/categories">Categories</a></li>
+          
+            <li><a href="/tags">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </div>
+      
+      <!-- Footer Social Section -->
+      
+        <div class="footer-section footer-social">
+          <h4 class="footer-title">关注我们</h4>
+          <div class="social-links">
+            
+              <a href="https://github.com" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 aria-label="GitHub">
+                
+                  <i class="fab fa-github"></i>
+                
+                <span class="social-name">GitHub</span>
+              </a>
+            
+              <a href="https://twitter.com" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 aria-label="Twitter">
+                
+                  <i class="fab fa-twitter"></i>
+                
+                <span class="social-name">Twitter</span>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2025 
+        <a href="/">Tech Blogger</a>. 
+        版权所有
+      </div>
+      <div class="footer-powered">
+        由 
+        <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+        <span class="separator">|</span>
+        主题: 
+        <a href="#" target="_blank" rel="noopener noreferrer">Dark Tech</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  
+  
+
+<!-- jQuery 3.6.0 -->
+
+  <!-- Hybrid: CDN with local fallback -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.jQuery || document.write('<script src="/lib/jquery/jquery-3.6.0.min.js"><\/script>')</script>
+
+
+<!-- Main Script -->
+
+<script src="/js/main.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+  
+<script src="/js/encryption.js"></script>
+
+
+
+
+
+</body>
+</html>

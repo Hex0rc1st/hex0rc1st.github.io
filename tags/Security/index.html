@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<!-- Primary Meta Tags -->
+<title>标签: Security | Dark Tech Blog</title>
+<meta name="title" content="标签: Security | Dark Tech Blog">
+<meta name="description" content="一个专注于技术分享的个人博客，涵盖前端开发、后端架构、DevOps 和软件工程最佳实践。">
+
+<meta name="keywords" content="技术博客, 前端开发, 后端架构, JavaScript, Web开发, 编程教程">
+
+<meta name="author" content="Tech Blogger">
+<meta name="robots" content="index, follow">
+<meta name="language" content="zh-CN">
+<link rel="canonical" href="http://example.comtags/Security/index.html">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://example.comtags/Security/index.html">
+<meta property="og:title" content="标签: Security | Dark Tech Blog">
+<meta property="og:description" content="一个专注于技术分享的个人博客，涵盖前端开发、后端架构、DevOps 和软件工程最佳实践。">
+
+<meta property="og:site_name" content="Dark Tech Blog">
+<meta property="og:locale" content="zh_CN">
+
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://example.comtags/Security/index.html">
+<meta name="twitter:title" content="标签: Security | Dark Tech Blog">
+<meta name="twitter:description" content="一个专注于技术分享的个人博客，涵盖前端开发、后端架构、DevOps 和软件工程最佳实践。">
+
+
+
+
+<!-- Favicon -->
+
+  <link rel="icon" href="/favicon.ico">
+
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- Font Awesome 6.4.0 with optimized loading -->
+
+  <!-- Hybrid: CDN with local fallback and optimized loading -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous"
+        onerror="this.onerror=null;this.href='/lib/fontawesome/css/all.min.css';this.rel='stylesheet';">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+
+
+<!-- Preconnect for performance -->
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+
+{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;WebPage&#34;,&#34;headline&#34;:&#34;标签: Security&#34;,&#34;name&#34;:&#34;标签: Security | Dark Tech Blog&#34;,&#34;description&#34;:&#34;一个专注于技术分享的个人博客，涵盖前端开发、后端架构、DevOps 和软件工程最佳实践。&#34;,&#34;url&#34;:&#34;http://example.comtags/Security/index.html&#34;,&#34;inLanguage&#34;:&#34;zh-CN&#34;}
+</script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class=" is-tag">
+  <div id="container" class="site-container">
+    <header id="header" class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Site Branding -->
+      <div class="site-branding">
+        
+          <p class="site-title">
+            <a href="/" rel="home">Dark Tech Blog</a>
+          </p>
+        
+        
+          <p class="site-subtitle">探索技术的深度与广度</p>
+        
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="切换菜单" aria-expanded="false">
+        <span class="hamburger-icon">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
+      
+      <!-- Main Navigation -->
+      <nav id="main-nav" class="main-nav" role="navigation" aria-label="主导航">
+        <ul class="nav-menu">
+          
+            
+            <li class="nav-item active">
+              <a class="nav-link" href="/">
+                
+                  <i class="fas fa-home nav-icon"></i>
+                
+                <span class="nav-text">Home</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/archives">
+                
+                  <i class="fas fa-archive nav-icon"></i>
+                
+                <span class="nav-text">Archives</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/categories">
+                
+                  <i class="fas fa-folder nav-icon"></i>
+                
+                <span class="nav-text">Categories</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item active">
+              <a class="nav-link" href="/tags">
+                
+                  <i class="fas fa-tags nav-icon"></i>
+                
+                <span class="nav-text">Tags</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/about">
+                
+                  <i class="fas fa-user nav-icon"></i>
+                
+                <span class="nav-text">About</span>
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+      
+      <!-- Search Form -->
+      
+        <div class="header-search">
+          <button id="search-toggle" class="search-toggle" aria-label="切换搜索">
+            <i class="fas fa-search"></i>
+          </button>
+          <div id="search-form-wrap" class="search-form-wrap">
+            <form class="search-form" role="search">
+              <label for="search-input" class="sr-only">搜索</label>
+              <input type="search" 
+                     id="search-input" 
+                     class="search-input" 
+                     placeholder="搜索文章..."
+                     autocomplete="off">
+              <button type="submit" class="search-submit" aria-label="搜索">
+                <i class="fas fa-search"></i>
+              </button>
+              <button type="button" class="search-close" aria-label="关闭搜索">
+                <i class="fas fa-times"></i>
+              </button>
+            </form>
+            <div id="search-results" class="search-results"></div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</header>
+
+    
+    <main id="main" class="site-main">
+      <div class="container">
+        
+        <div class="main-content-wrapper has-sidebar sidebar-right">
+          <div id="content" class="site-content">
+            
+
+
+  
+  <div class="tag-page">
+    <header class="page-header">
+      <h1 class="page-title">
+        <i class="fas fa-tag"></i>
+        <span>标签: Security</span>
+      </h1>
+      <p class="page-description">
+        1 post
+      </p>
+    </header>
+
+    <div class="post-list">
+      
+        
+          <article class="post-card" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="post-card-inner">
+    
+    <header class="post-card-header">
+      <h2 class="post-card-title" itemprop="name headline">
+        <a href="/2025/12/27/web-security-best-practices/" itemprop="url">
+          
+          Web Security Best Practices
+        </a>
+      </h2>
+    </header>
+
+    
+    <div class="post-card-meta">
+      
+      <time class="post-card-date" datetime="2025-12-27T08:45:00.000Z" itemprop="datePublished">
+        <i class="far fa-calendar-alt"></i>
+        <span>2025年12月27日</span>
+      </time>
+
+      
+      
+        <span class="post-card-categories">
+          <i class="far fa-folder"></i>
+          
+            <a href="/categories/Security/" itemprop="articleSection">Security</a><span class="separator">/</span>
+          
+            <a href="/categories/Security/Web-Development/" itemprop="articleSection">Web Development</a>
+          
+        </span>
+      
+
+      
+      
+        <span class="post-card-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <i class="far fa-user"></i>
+          <span itemprop="name">Tech Blogger</span>
+        </span>
+      
+    </div>
+
+    
+    <div class="post-card-excerpt" itemprop="description">
+      
+        <p>Essential security practices every web developer should follow.
+Input ValidationAlways validate and sanitize user input:
+123456789101112131415// Bad - vulnerable to XSSfunction displayUserInput(inp...</p>
+      
+    </div>
+
+    
+    <footer class="post-card-footer">
+      
+      
+        <div class="post-card-tags">
+          <i class="fas fa-tags"></i>
+          
+            <a href="/tags/Web-Development/" class="post-tag" rel="tag">Web Development</a>
+          
+            <a href="/tags/Best-Practices/" class="post-tag" rel="tag">Best Practices</a>
+          
+            <a href="/tags/Security/" class="post-tag" rel="tag">Security</a>
+          
+        </div>
+      
+
+      
+      <a href="/2025/12/27/web-security-best-practices/" class="post-card-readmore">
+        <span>阅读全文</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </footer>
+  </div>
+</article>
+
+        
+      
+    </div>
+
+    
+    
+  </div>
+
+
+
+          </div>
+          
+          
+            <aside id="sidebar" class="sidebar">
+  
+    
+      <div class="widget widget-category">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-folder"></i>
+            分类
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="category-list">
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Programming/CSS/">
+                      CSS
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Database/">
+                      Database
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/DevOps/">
+                      DevOps
+                    </a>
+                    <span class="category-list-count">2</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/DevOps/Docker/">
+                      Docker
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Programming/Frontend/">
+                      Frontend
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Getting-Started/">
+                      Getting Started
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Database/Performance/">
+                      Performance
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Personal/">
+                      Personal
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Programming/">
+                      Programming
+                    </a>
+                    <span class="category-list-count">4</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Programming/Python/">
+                      Python
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Security/">
+                      Security
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/DevOps/Version-Control/">
+                      Version Control
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Security/Web-Development/">
+                      Web Development
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">
+                      测试
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+              </ul>
+            
+          </div>
+        
+      </div>
+    
+      <div class="widget widget-tag">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-tags"></i>
+            标签
+          </h3>
+          <div class="widget-content">
+            
+              <div class="tag-cloud">
+                
+                  <a class="tag-cloud-link" href="/tags/Beginner/" 
+                     style="font-size: 14px;">
+                    #Beginner
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Best-Practices/" 
+                     style="font-size: 16px;">
+                    #Best Practices
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/CSS/" 
+                     style="font-size: 14px;">
+                    #CSS
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Containers/" 
+                     style="font-size: 14px;">
+                    #Containers
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Data-Structures/" 
+                     style="font-size: 14px;">
+                    #Data Structures
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Database/" 
+                     style="font-size: 14px;">
+                    #Database
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/DevOps/" 
+                     style="font-size: 14px;">
+                    #DevOps
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Docker/" 
+                     style="font-size: 14px;">
+                    #Docker
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Flexbox/" 
+                     style="font-size: 14px;">
+                    #Flexbox
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Frontend/" 
+                     style="font-size: 14px;">
+                    #Frontend
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Git/" 
+                     style="font-size: 14px;">
+                    #Git
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Hexo/" 
+                     style="font-size: 14px;">
+                    #Hexo
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/JavaScript/" 
+                     style="font-size: 16px;">
+                    #JavaScript
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Layout/" 
+                     style="font-size: 14px;">
+                    #Layout
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Notes/" 
+                     style="font-size: 14px;">
+                    #Notes
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Optimization/" 
+                     style="font-size: 14px;">
+                    #Optimization
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Performance/" 
+                     style="font-size: 14px;">
+                    #Performance
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Private/" 
+                     style="font-size: 14px;">
+                    #Private
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Python/" 
+                     style="font-size: 14px;">
+                    #Python
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/React/" 
+                     style="font-size: 14px;">
+                    #React
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/SQL/" 
+                     style="font-size: 14px;">
+                    #SQL
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Security/" 
+                     style="font-size: 14px;">
+                    #Security
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Tutorial/" 
+                     style="font-size: 20px;">
+                    #Tutorial
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Version-Control/" 
+                     style="font-size: 14px;">
+                    #Version Control
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Web-Development/" 
+                     style="font-size: 18px;">
+                    #Web Development
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/%E5%8A%A0%E5%AF%86/" 
+                     style="font-size: 14px;">
+                    #加密
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/%E6%B5%8B%E8%AF%95/" 
+                     style="font-size: 14px;">
+                    #测试
+                  </a>
+                
+              </div>
+            
+          </div>
+        
+      </div>
+    
+      <div class="widget widget-archive">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-archive"></i>
+            archives
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="archive-list">
+                
+                
+                  
+                  <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archives/2025/12">
+                      2025/12
+                    </a>
+                    <span class="archive-list-count">11</span>
+                  </li>
+                
+              </ul>
+              <a class="archive-all-link" href="/archives">
+                查看全部 <i class="fas fa-arrow-right"></i>
+              </a>
+            
+          </div>
+        
+      </div>
+    
+      <div class="widget widget-recent_posts">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-clock"></i>
+            最新文章
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="recent-posts-list">
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/30/encrypted-test-post/">
+                      
+                        <i class="fas fa-lock" title="已加密"></i>
+                      
+                      加密测试文章
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-30T04:00:00.000Z">
+                      12-30
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/30/hello-world/">
+                      
+                      Hello World
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-30T02:00:00.000Z">
+                      12-30
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/29/javascript-basics/">
+                      
+                      JavaScript Basics
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-29T06:30:00.000Z">
+                      12-29
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/28/python-data-structures/">
+                      
+                      Python Data Structures Guide
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-28T02:00:00.000Z">
+                      12-28
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/28/css-flexbox-guide/">
+                      
+                      CSS Flexbox Guide
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-28T01:15:00.000Z">
+                      12-28
+                    </time>
+                  </li>
+                
+              </ul>
+            
+          </div>
+        
+      </div>
+    
+  
+</aside>
+
+          
+        </div>
+      </div>
+    </main>
+    
+    <footer id="footer" class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Footer Info Section -->
+      <div class="footer-section footer-info">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">Dark Tech Blog</a>
+          
+            <p class="footer-description">一个专注于技术分享的个人博客，涵盖前端开发、后端架构、DevOps 和软件工程最佳实践。</p>
+          
+        </div>
+      </div>
+      
+      <!-- Footer Links Section -->
+      <div class="footer-section footer-links">
+        <h4 class="footer-title">快速链接</h4>
+        <ul class="footer-menu">
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/categories">Categories</a></li>
+          
+            <li><a href="/tags">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </div>
+      
+      <!-- Footer Social Section -->
+      
+        <div class="footer-section footer-social">
+          <h4 class="footer-title">关注我们</h4>
+          <div class="social-links">
+            
+              <a href="https://github.com" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 aria-label="GitHub">
+                
+                  <i class="fab fa-github"></i>
+                
+                <span class="social-name">GitHub</span>
+              </a>
+            
+              <a href="https://twitter.com" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 aria-label="Twitter">
+                
+                  <i class="fab fa-twitter"></i>
+                
+                <span class="social-name">Twitter</span>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2025 
+        <a href="/">Tech Blogger</a>. 
+        版权所有
+      </div>
+      <div class="footer-powered">
+        由 
+        <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+        <span class="separator">|</span>
+        主题: 
+        <a href="#" target="_blank" rel="noopener noreferrer">Dark Tech</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  
+  
+
+<!-- jQuery 3.6.0 -->
+
+  <!-- Hybrid: CDN with local fallback -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.jQuery || document.write('<script src="/lib/jquery/jquery-3.6.0.min.js"><\/script>')</script>
+
+
+<!-- Main Script -->
+
+<script src="/js/main.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+  
+<script src="/js/encryption.js"></script>
+
+
+
+
+
+</body>
+</html>

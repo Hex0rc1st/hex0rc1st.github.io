@@ -3522,6 +3522,114 @@ figure.highlight.has-copy-btn::before {
    Password-protected article styling
    ============================================ */
 
+/* Override hexo-blog-encrypt plugin styles for dark theme */
+.hbe-container {
+  max-width: 500px !important;
+  margin: var(--space-2xl) auto !important;
+  padding: var(--space-xl) !important;
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-lg) !important;
+  text-align: center !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.hbe-content {
+  text-align: center !important;
+  padding: var(--space-lg) 0 !important;
+}
+
+/* Fix input field styling */
+.hbe-input-field-default {
+  width: 100% !important;
+  padding: var(--space-sm) var(--space-md) !important;
+  font-size: var(--font-size-base) !important;
+  font-family: var(--font-sans) !important;
+  color: var(--text-primary) !important;
+  background-color: var(--bg-primary) !important;
+  border: 2px solid var(--border-color) !important;
+  border-radius: var(--radius-md) !important;
+  outline: none !important;
+  opacity: 1 !important;
+  margin-bottom: 0 !important;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast) !important;
+}
+
+.hbe-input-field-default:focus {
+  border-color: var(--link-color) !important;
+  box-shadow: 0 0 0 3px rgba(129, 162, 190, 0.2) !important;
+  background-color: var(--bg-primary) !important;
+}
+
+.hbe-input-field-default::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Fix label styling */
+.hbe-input-label-default {
+  width: 100% !important;
+  position: relative !important;
+  text-align: center !important;
+  padding: 0 0 var(--space-md) 0 !important;
+  pointer-events: none !important;
+  font-size: var(--font-size-base) !important;
+  color: var(--text-secondary) !important;
+  transform: none !important;
+}
+
+.hbe-input-label-default::before,
+.hbe-input-label-default::after {
+  display: none !important;
+}
+
+.hbe-input-label-content-default {
+  padding: 0 !important;
+  transform: none !important;
+  color: var(--text-secondary) !important;
+  font-size: var(--font-size-base) !important;
+}
+
+/* Fix button styling */
+.hbe-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 130px !important;
+  padding: var(--space-sm) var(--space-lg) !important;
+  margin: var(--space-md) auto !important;
+  font-size: var(--font-size-base) !important;
+  font-weight: var(--font-weight-medium) !important;
+  font-family: var(--font-sans) !important;
+  color: var(--bg-primary) !important;
+  background: var(--link-color) !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  border-bottom: none !important;
+  box-shadow: var(--shadow-sm) !important;
+  cursor: pointer !important;
+  text-shadow: none !important;
+  text-align: center !important;
+  text-indent: 0 !important;
+  transition: background-color var(--transition-fast), transform var(--transition-fast) !important;
+}
+
+.hbe-button:hover {
+  background-color: var(--link-hover) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.hbe-button:active {
+  transform: translateY(0) !important;
+  box-shadow: var(--shadow-sm) !important;
+  top: 0 !important;
+}
+
+.hbe-button::after {
+  display: none !important;
+}
+
 /* Encrypted post indicator icon */
 .post-encrypted-icon {
   color: var(--color-warning);
@@ -3529,9 +3637,8 @@ figure.highlight.has-copy-btn::before {
   font-size: 0.9em;
 }
 
-/* Encryption container - hexo-blog-encrypt plugin */
+/* Legacy encryption container styles (kept for compatibility) */
 #hexo-blog-encrypt,
-.hbe-container,
 .encrypt-container {
   max-width: 500px;
   margin: var(--space-2xl) auto;
