@@ -1,187 +1,806 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Archives | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<!-- Primary Meta Tags -->
+<title>归档 | Dark Tech Blog</title>
+<meta name="title" content="归档 | Dark Tech Blog">
+<meta name="description" content="一个专注于技术分享的个人博客，涵盖前端开发、后端架构、DevOps 和软件工程最佳实践。">
+
+<meta name="keywords" content="技术博客, 前端开发, 后端架构, JavaScript, Web开发, 编程教程">
+
+<meta name="author" content="Tech Blogger">
+<meta name="robots" content="index, follow">
+<meta name="language" content="zh-CN">
+<link rel="canonical" href="http://example.comarchives/index.html">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://example.comarchives/index.html">
+<meta property="og:title" content="归档 | Dark Tech Blog">
+<meta property="og:description" content="一个专注于技术分享的个人博客，涵盖前端开发、后端架构、DevOps 和软件工程最佳实践。">
+
+<meta property="og:site_name" content="Dark Tech Blog">
+<meta property="og:locale" content="zh_CN">
+
+
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
+<meta name="twitter:url" content="http://example.comarchives/index.html">
+<meta name="twitter:title" content="归档 | Dark Tech Blog">
+<meta name="twitter:description" content="一个专注于技术分享的个人博客，涵盖前端开发、后端架构、DevOps 和软件工程最佳实践。">
+
+
+
+
+<!-- Favicon -->
+
+  <link rel="icon" href="/favicon.ico">
+
+
+<!-- CSS -->
+
 <link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+<!-- Font Awesome 6.4.0 with optimized loading -->
+
+  <!-- Hybrid: CDN with local fallback and optimized loading -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous"
+        onerror="this.onerror=null;this.href='/lib/fontawesome/css/all.min.css';this.rel='stylesheet';">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+
+
+<!-- Preconnect for performance -->
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+
+{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;WebPage&#34;,&#34;headline&#34;:&#34;归档&#34;,&#34;name&#34;:&#34;归档 | Dark Tech Blog&#34;,&#34;description&#34;:&#34;一个专注于技术分享的个人博客，涵盖前端开发、后端架构、DevOps 和软件工程最佳实践。&#34;,&#34;url&#34;:&#34;http://example.comarchives/index.html&#34;,&#34;inLanguage&#34;:&#34;zh-CN&#34;}
+</script>
 
 <meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+<body class=" is-archive">
+  <div id="container" class="site-container">
+    <header id="header" class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Site Branding -->
+      <div class="site-branding">
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
+          <p class="site-title">
+            <a href="/" rel="home">Dark Tech Blog</a>
+          </p>
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+          <p class="site-subtitle">探索技术的深度与广度</p>
         
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="切换菜单" aria-expanded="false">
+        <span class="hamburger-icon">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
+      
+      <!-- Main Navigation -->
+      <nav id="main-nav" class="main-nav" role="navigation" aria-label="主导航">
+        <ul class="nav-menu">
+          
+            
+            <li class="nav-item active">
+              <a class="nav-link" href="/">
+                
+                  <i class="fas fa-home nav-icon"></i>
+                
+                <span class="nav-text">Home</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item active">
+              <a class="nav-link" href="/archives">
+                
+                  <i class="fas fa-archive nav-icon"></i>
+                
+                <span class="nav-text">Archives</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/categories">
+                
+                  <i class="fas fa-folder nav-icon"></i>
+                
+                <span class="nav-text">Categories</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/tags">
+                
+                  <i class="fas fa-tags nav-icon"></i>
+                
+                <span class="nav-text">Tags</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/about">
+                
+                  <i class="fas fa-user nav-icon"></i>
+                
+                <span class="nav-text">About</span>
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+      
+      <!-- Search Form -->
+      
+        <div class="header-search">
+          <button id="search-toggle" class="search-toggle" aria-label="切换搜索">
+            <i class="fas fa-search"></i>
+          </button>
+          <div id="search-form-wrap" class="search-form-wrap">
+            <form class="search-form" role="search">
+              <label for="search-input" class="sr-only">搜索</label>
+              <input type="search" 
+                     id="search-input" 
+                     class="search-input" 
+                     placeholder="搜索文章..."
+                     autocomplete="off">
+              <button type="submit" class="search-submit" aria-label="搜索">
+                <i class="fas fa-search"></i>
+              </button>
+              <button type="button" class="search-close" aria-label="关闭搜索">
+                <i class="fas fa-times"></i>
+              </button>
+            </form>
+            <div id="search-results" class="search-results"></div>
+          </div>
+        </div>
+      
     </div>
   </div>
 </header>
 
-      <div class="outer">
-        <section id="main">
-  
-  
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/12/30/hello-world/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-12-30T01:19:46.254Z" itemprop="datePublished">Dec 30</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/12/30/hello-world/">Hello World</a>
+    <main id="main" class="site-main">
+      <div class="container">
+        
+        <div class="main-content-wrapper has-sidebar sidebar-right">
+          <div id="content" class="site-content">
+            
+
+<div class="archive-page">
+  <header class="archive-header">
+    <h1 class="archive-title">
+      <i class="fas fa-archive"></i>
+      文章归档
     </h1>
+    <p class="archive-description">
+      共 4 篇文章
+    </p>
+  </header>
+
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-</section>
+  <div class="archive-timeline">
+    
+      <section class="archive-year-section" data-year="2025">
+        <div class="archive-year-header" role="button" tabindex="0" aria-expanded="true" aria-controls="archive-year-2025-content">
+          <div class="archive-year-info">
+            <span class="archive-year-icon">
+              <i class="fas fa-chevron-down"></i>
+            </span>
+            <h2 class="archive-year-title">2025</h2>
+            <span class="archive-year-count">4 篇</span>
+          </div>
+        </div>
         
-          <aside id="sidebar">
-  
+        <div id="archive-year-2025-content" class="archive-year-content is-expanded">
+          
+          
+          
+            <div class="archive-month-section" data-month="12">
+              <div class="archive-month-header" role="button" tabindex="0" aria-expanded="true" aria-controls="archive-2025-12-content">
+                <div class="archive-month-info">
+                  <span class="archive-month-icon">
+                    <i class="fas fa-chevron-right"></i>
+                  </span>
+                  <h3 class="archive-month-title">12 月</h3>
+                  <span class="archive-month-count">4 篇</span>
+                </div>
+              </div>
+              
+              <div id="archive-2025-12-content" class="archive-month-content is-expanded">
+                <ul class="archive-post-list">
+                  
+                  
+                    <li class="archive-post-item">
+                      <article class="archive-post" itemscope itemtype="http://schema.org/BlogPosting">
+                        <div class="archive-post-date">
+                          <time datetime="2025-12-30T04:00:00.000Z" itemprop="datePublished">
+                            <span class="archive-post-day">30</span>
+                          </time>
+                        </div>
+                        <div class="archive-post-content">
+                          <h4 class="archive-post-title" itemprop="name headline">
+                            <a href="/2025/12/30/encrypted-test-post/" itemprop="url">
+                              
+                                <i class="fas fa-lock archive-encrypted-icon" title="加密文章"></i>
+                              
+                              加密测试文章
+                            </a>
+                          </h4>
+                          
+                            <p class="archive-post-excerpt" itemprop="description">
+                              这是一篇加密文章，需要输入密码才能查看内容。
+                            </p>
+                          
+                          <div class="archive-post-meta">
+                            
+                              <span class="archive-post-category">
+                                <i class="far fa-folder"></i>
+                                
+                                  <a href="/categories/%E6%B5%8B%E8%AF%95/">测试</a>
+                                
+                              </span>
+                            
+                            
+                              <span class="archive-post-tags">
+                                <i class="fas fa-tags"></i>
+                                
+                                  <a href="/tags/%E5%8A%A0%E5%AF%86/">加密</a>, 
+                                
+                                  <a href="/tags/%E6%B5%8B%E8%AF%95/">测试</a>
+                                
+                              </span>
+                            
+                          </div>
+                        </div>
+                      </article>
+                    </li>
+                  
+                    <li class="archive-post-item">
+                      <article class="archive-post" itemscope itemtype="http://schema.org/BlogPosting">
+                        <div class="archive-post-date">
+                          <time datetime="2025-12-30T02:00:00.000Z" itemprop="datePublished">
+                            <span class="archive-post-day">30</span>
+                          </time>
+                        </div>
+                        <div class="archive-post-content">
+                          <h4 class="archive-post-title" itemprop="name headline">
+                            <a href="/2025/12/30/hello-world/" itemprop="url">
+                              
+                              Hello World
+                            </a>
+                          </h4>
+                          
+                          <div class="archive-post-meta">
+                            
+                              <span class="archive-post-category">
+                                <i class="far fa-folder"></i>
+                                
+                                  <a href="/categories/Getting-Started/">Getting Started</a>
+                                
+                              </span>
+                            
+                            
+                              <span class="archive-post-tags">
+                                <i class="fas fa-tags"></i>
+                                
+                                  <a href="/tags/Hexo/">Hexo</a>, 
+                                
+                                  <a href="/tags/Tutorial/">Tutorial</a>, 
+                                
+                                  <a href="/tags/Beginner/">Beginner</a>
+                                
+                              </span>
+                            
+                          </div>
+                        </div>
+                      </article>
+                    </li>
+                  
+                    <li class="archive-post-item">
+                      <article class="archive-post" itemscope itemtype="http://schema.org/BlogPosting">
+                        <div class="archive-post-date">
+                          <time datetime="2025-12-29T06:30:00.000Z" itemprop="datePublished">
+                            <span class="archive-post-day">29</span>
+                          </time>
+                        </div>
+                        <div class="archive-post-content">
+                          <h4 class="archive-post-title" itemprop="name headline">
+                            <a href="/2025/12/29/javascript-basics/" itemprop="url">
+                              
+                              JavaScript Basics
+                            </a>
+                          </h4>
+                          
+                          <div class="archive-post-meta">
+                            
+                              <span class="archive-post-category">
+                                <i class="far fa-folder"></i>
+                                
+                                  <a href="/categories/Programming/">Programming</a>
+                                
+                              </span>
+                            
+                            
+                              <span class="archive-post-tags">
+                                <i class="fas fa-tags"></i>
+                                
+                                  <a href="/tags/Web-Development/">Web Development</a>, 
+                                
+                                  <a href="/tags/Tutorial/">Tutorial</a>, 
+                                
+                                  <a href="/tags/JavaScript/">JavaScript</a>
+                                
+                              </span>
+                            
+                          </div>
+                        </div>
+                      </article>
+                    </li>
+                  
+                    <li class="archive-post-item">
+                      <article class="archive-post" itemscope itemtype="http://schema.org/BlogPosting">
+                        <div class="archive-post-date">
+                          <time datetime="2025-12-28T01:15:00.000Z" itemprop="datePublished">
+                            <span class="archive-post-day">28</span>
+                          </time>
+                        </div>
+                        <div class="archive-post-content">
+                          <h4 class="archive-post-title" itemprop="name headline">
+                            <a href="/2025/12/28/css-flexbox-guide/" itemprop="url">
+                              
+                              CSS Flexbox Guide
+                            </a>
+                          </h4>
+                          
+                          <div class="archive-post-meta">
+                            
+                              <span class="archive-post-category">
+                                <i class="far fa-folder"></i>
+                                
+                                  <a href="/categories/Programming/">Programming</a>, 
+                                
+                                  <a href="/categories/Programming/CSS/">CSS</a>
+                                
+                              </span>
+                            
+                            
+                              <span class="archive-post-tags">
+                                <i class="fas fa-tags"></i>
+                                
+                                  <a href="/tags/CSS/">CSS</a>, 
+                                
+                                  <a href="/tags/Flexbox/">Flexbox</a>, 
+                                
+                                  <a href="/tags/Web-Development/">Web Development</a>, 
+                                
+                                  <a href="/tags/Layout/">Layout</a>
+                                
+                              </span>
+                            
+                          </div>
+                        </div>
+                      </article>
+                    </li>
+                  
+                </ul>
+              </div>
+            </div>
+          
+        </div>
+      </section>
     
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li></ul>
-    </div>
   </div>
 
+  
+  
+</div>
 
+<script>
+// 归档页面展开/折叠功能
+(function($) {
+  'use strict';
+  
+  $(document).ready(function() {
+    // 年份展开/折叠
+    $('.archive-year-header').on('click keypress', function(e) {
+      if (e.type === 'keypress' && e.which !== 13 && e.which !== 32) return;
+      e.preventDefault();
+      
+      var $header = $(this);
+      var $content = $header.next('.archive-year-content');
+      var isExpanded = $header.attr('aria-expanded') === 'true';
+      
+      $header.attr('aria-expanded', !isExpanded);
+      $content.toggleClass('is-expanded');
+      
+      // 更新图标方向
+      $header.find('.archive-year-icon i')
+        .toggleClass('fa-chevron-down', !isExpanded)
+        .toggleClass('fa-chevron-right', isExpanded);
+    });
+    
+    // 月份展开/折叠
+    $('.archive-month-header').on('click keypress', function(e) {
+      if (e.type === 'keypress' && e.which !== 13 && e.which !== 32) return;
+      e.preventDefault();
+      
+      var $header = $(this);
+      var $content = $header.next('.archive-month-content');
+      var isExpanded = $header.attr('aria-expanded') === 'true';
+      
+      $header.attr('aria-expanded', !isExpanded);
+      $content.toggleClass('is-expanded');
+      
+      // 更新图标方向
+      $header.find('.archive-month-icon i')
+        .toggleClass('fa-chevron-down', !isExpanded)
+        .toggleClass('fa-chevron-right', isExpanded);
+    });
+    
+    // 初始化图标状态
+    $('.archive-year-header').each(function() {
+      var isExpanded = $(this).attr('aria-expanded') === 'true';
+      $(this).find('.archive-year-icon i')
+        .toggleClass('fa-chevron-down', isExpanded)
+        .toggleClass('fa-chevron-right', !isExpanded);
+    });
+    
+    $('.archive-month-header').each(function() {
+      var isExpanded = $(this).attr('aria-expanded') === 'true';
+      $(this).find('.archive-month-icon i')
+        .toggleClass('fa-chevron-down', isExpanded)
+        .toggleClass('fa-chevron-right', !isExpanded);
+    });
+  });
+})(jQuery);
+</script>
+
+
+          </div>
+          
+          
+            <aside id="sidebar" class="sidebar">
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
+      <div class="widget widget-category">
         
-          <li>
-            <a href="/2025/12/30/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
+          <h3 class="widget-title">
+            <i class="fas fa-folder"></i>
+            分类
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="category-list">
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Programming/CSS/">
+                      CSS
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Getting-Started/">
+                      Getting Started
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Programming/">
+                      Programming
+                    </a>
+                    <span class="category-list-count">2</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">
+                      测试
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+              </ul>
+            
+          </div>
         
       </div>
-      <footer id="footer">
+    
+      <div class="widget widget-tag">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-tags"></i>
+            标签
+          </h3>
+          <div class="widget-content">
+            
+              <div class="tag-cloud">
+                
+                  <a class="tag-cloud-link" href="/tags/Beginner/" 
+                     style="font-size: 14px;">
+                    #Beginner
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/CSS/" 
+                     style="font-size: 14px;">
+                    #CSS
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Flexbox/" 
+                     style="font-size: 14px;">
+                    #Flexbox
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Hexo/" 
+                     style="font-size: 14px;">
+                    #Hexo
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/JavaScript/" 
+                     style="font-size: 14px;">
+                    #JavaScript
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Layout/" 
+                     style="font-size: 14px;">
+                    #Layout
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Tutorial/" 
+                     style="font-size: 16px;">
+                    #Tutorial
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Web-Development/" 
+                     style="font-size: 16px;">
+                    #Web Development
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/%E5%8A%A0%E5%AF%86/" 
+                     style="font-size: 14px;">
+                    #加密
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/%E6%B5%8B%E8%AF%95/" 
+                     style="font-size: 14px;">
+                    #测试
+                  </a>
+                
+              </div>
+            
+          </div>
+        
+      </div>
+    
+      <div class="widget widget-archive">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-archive"></i>
+            archives
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="archive-list">
+                
+                
+                  
+                  <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archives/2025/12">
+                      2025/12
+                    </a>
+                    <span class="archive-list-count">4</span>
+                  </li>
+                
+              </ul>
+              <a class="archive-all-link" href="/archives">
+                查看全部 <i class="fas fa-arrow-right"></i>
+              </a>
+            
+          </div>
+        
+      </div>
+    
+      <div class="widget widget-recent_posts">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-clock"></i>
+            最新文章
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="recent-posts-list">
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/30/encrypted-test-post/">
+                      
+                        <i class="fas fa-lock" title="已加密"></i>
+                      
+                      加密测试文章
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-30T04:00:00.000Z">
+                      12-30
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/30/hello-world/">
+                      
+                      Hello World
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-30T02:00:00.000Z">
+                      12-30
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/29/javascript-basics/">
+                      
+                      JavaScript Basics
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-29T06:30:00.000Z">
+                      12-29
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/28/css-flexbox-guide/">
+                      
+                      CSS Flexbox Guide
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-28T01:15:00.000Z">
+                      12-28
+                    </time>
+                  </li>
+                
+              </ul>
+            
+          </div>
+        
+      </div>
+    
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
+</aside>
+
+          
+        </div>
+      </div>
+    </main>
+    
+    <footer id="footer" class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Footer Info Section -->
+      <div class="footer-section footer-info">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">Dark Tech Blog</a>
+          
+            <p class="footer-description">一个专注于技术分享的个人博客，涵盖前端开发、后端架构、DevOps 和软件工程最佳实践。</p>
+          
+        </div>
+      </div>
       
-      &copy; 2025 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      <!-- Footer Links Section -->
+      <div class="footer-section footer-links">
+        <h4 class="footer-title">快速链接</h4>
+        <ul class="footer-menu">
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/categories">Categories</a></li>
+          
+            <li><a href="/tags">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </div>
+      
+      <!-- Footer Social Section -->
+      
+        <div class="footer-section footer-social">
+          <h4 class="footer-title">关注我们</h4>
+          <div class="social-links">
+            
+              <a href="https://github.com" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 aria-label="GitHub">
+                
+                  <i class="fab fa-github"></i>
+                
+                <span class="social-name">GitHub</span>
+              </a>
+            
+              <a href="https://twitter.com" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 aria-label="Twitter">
+                
+                  <i class="fab fa-twitter"></i>
+                
+                <span class="social-name">Twitter</span>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2025 
+        <a href="/">Tech Blogger</a>. 
+        版权所有
+      </div>
+      <div class="footer-powered">
+        由 
+        <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+        <span class="separator">|</span>
+        主题: 
+        <a href="#" target="_blank" rel="noopener noreferrer">Dark Tech</a>
+      </div>
     </div>
   </div>
 </footer>
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
   </div>
+  
+  
+
+<!-- jQuery 3.6.0 -->
+
+  <!-- Hybrid: CDN with local fallback -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.jQuery || document.write('<script src="/lib/jquery/jquery-3.6.0.min.js"><\/script>')</script>
+
+
+<!-- Main Script -->
+
+<script src="/js/main.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+  
+<script src="/js/encryption.js"></script>
+
+
+
+
+
 </body>
 </html>
