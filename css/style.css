@@ -912,12 +912,18 @@ a:focus {
   transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
+/* 覆盖 visited 颜色，保持导航链接颜色一致 */
+.nav-link:visited {
+  color: var(--text-primary);
+}
+
 .nav-link:hover {
   background-color: var(--bg-tertiary);
   color: var(--link-hover);
 }
 
-.nav-item.active .nav-link {
+.nav-item.active .nav-link,
+.nav-item.active .nav-link:visited {
   background-color: var(--bg-tertiary);
   color: var(--text-accent);
 }
@@ -1562,30 +1568,30 @@ a:focus {
 }
 
 .post-card-inner {
-  padding: var(--space-lg);
+  padding: var(--space-md);
 }
 
 @media (min-width: 768px) {
   .post-card-inner {
-    padding: var(--space-xl);
+    padding: var(--space-lg);
   }
 }
 
 /* Post Card Header */
 .post-card-header {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .post-card-title {
   margin: 0;
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-tight);
 }
 
 @media (min-width: 768px) {
   .post-card-title {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
   }
 }
 
@@ -1609,8 +1615,8 @@ a:focus {
 .post-card-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-md);
-  margin-bottom: var(--space-md);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
 }
@@ -1642,7 +1648,7 @@ a:focus {
 
 /* Post Card Excerpt */
 .post-card-excerpt {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-sm);
   color: var(--text-secondary);
   line-height: var(--line-height-relaxed);
 }
@@ -1652,7 +1658,7 @@ a:focus {
 }
 
 .post-card-excerpt p + p {
-  margin-top: var(--space-sm);
+  margin-top: var(--space-xs);
 }
 
 /* Post Card Footer */
@@ -1661,8 +1667,8 @@ a:focus {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: var(--space-md);
-  padding-top: var(--space-md);
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
   border-top: 1px solid var(--border-light);
 }
 
@@ -1696,20 +1702,9 @@ a:focus {
   color: var(--link-hover);
 }
 
-/* Read More Link */
+/* Read More Link - 隐藏阅读全文按钮 */
 .post-card-readmore {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-md);
-  background-color: transparent;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  color: var(--text-accent);
-  text-decoration: none;
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  display: none !important;
 }
 
 .post-card-readmore:hover {
@@ -2996,68 +2991,6 @@ figure.highlight .code .line {
   height: 1.6em;
 }
 
-/* Language Label */
-figure.highlight::before {
-  content: attr(class);
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: var(--space-xs) var(--space-sm);
-  background-color: #21252b;
-  color: #636d83;
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
-  text-transform: uppercase;
-  border-bottom-left-radius: var(--radius-sm);
-  z-index: 1;
-}
-
-/* Extract language name from class */
-figure.highlight.javascript::before { content: 'JavaScript'; }
-figure.highlight.js::before { content: 'JavaScript'; }
-figure.highlight.typescript::before { content: 'TypeScript'; }
-figure.highlight.ts::before { content: 'TypeScript'; }
-figure.highlight.python::before { content: 'Python'; }
-figure.highlight.py::before { content: 'Python'; }
-figure.highlight.java::before { content: 'Java'; }
-figure.highlight.c::before { content: 'C'; }
-figure.highlight.cpp::before { content: 'C++'; }
-figure.highlight.csharp::before { content: 'C#'; }
-figure.highlight.cs::before { content: 'C#'; }
-figure.highlight.go::before { content: 'Go'; }
-figure.highlight.rust::before { content: 'Rust'; }
-figure.highlight.ruby::before { content: 'Ruby'; }
-figure.highlight.rb::before { content: 'Ruby'; }
-figure.highlight.php::before { content: 'PHP'; }
-figure.highlight.swift::before { content: 'Swift'; }
-figure.highlight.kotlin::before { content: 'Kotlin'; }
-figure.highlight.scala::before { content: 'Scala'; }
-figure.highlight.html::before { content: 'HTML'; }
-figure.highlight.css::before { content: 'CSS'; }
-figure.highlight.scss::before { content: 'SCSS'; }
-figure.highlight.sass::before { content: 'Sass'; }
-figure.highlight.less::before { content: 'Less'; }
-figure.highlight.json::before { content: 'JSON'; }
-figure.highlight.xml::before { content: 'XML'; }
-figure.highlight.yaml::before { content: 'YAML'; }
-figure.highlight.yml::before { content: 'YAML'; }
-figure.highlight.markdown::before { content: 'Markdown'; }
-figure.highlight.md::before { content: 'Markdown'; }
-figure.highlight.bash::before { content: 'Bash'; }
-figure.highlight.shell::before { content: 'Shell'; }
-figure.highlight.sh::before { content: 'Shell'; }
-figure.highlight.zsh::before { content: 'Zsh'; }
-figure.highlight.powershell::before { content: 'PowerShell'; }
-figure.highlight.sql::before { content: 'SQL'; }
-figure.highlight.graphql::before { content: 'GraphQL'; }
-figure.highlight.dockerfile::before { content: 'Dockerfile'; }
-figure.highlight.nginx::before { content: 'Nginx'; }
-figure.highlight.apache::before { content: 'Apache'; }
-figure.highlight.vim::before { content: 'Vim'; }
-figure.highlight.plaintext::before { content: 'Plain Text'; }
-figure.highlight.plain::before { content: 'Plain Text'; }
-figure.highlight.text::before { content: 'Text'; }
-
 /* ============================================
    Atom One Dark Syntax Highlighting Colors
    ============================================ */
@@ -3488,11 +3421,6 @@ figure.highlight:hover .code-copy-btn {
   visibility: visible;
 }
 
-/* Adjust language label position when copy button is present */
-figure.highlight.has-copy-btn::before {
-  right: 44px;
-}
-
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .code-copy-btn {
@@ -3503,10 +3431,6 @@ figure.highlight.has-copy-btn::before {
   
   .code-copy-btn i {
     font-size: var(--font-size-xs);
-  }
-  
-  figure.highlight.has-copy-btn::before {
-    right: 38px;
   }
 }
 
@@ -3520,61 +3444,130 @@ figure.highlight.has-copy-btn::before {
 /* ============================================
    Encryption Styles
    Password-protected article styling
+   Clean double-line design with shake animation
    ============================================ */
 
-/* Override hexo-blog-encrypt plugin styles for dark theme */
+/* Remove all default plugin styling - 仅用于密码输入界面 */
 .hbe-container {
   max-width: 500px !important;
   margin: var(--space-2xl) auto !important;
-  padding: var(--space-xl) !important;
-  background-color: var(--bg-secondary) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: var(--radius-lg) !important;
+  padding: var(--space-2xl) 0 !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
   text-align: center !important;
-  box-shadow: var(--shadow-lg) !important;
+  box-shadow: none !important;
 }
 
+/* 密码输入界面居中 */
 .hbe-content {
   text-align: center !important;
-  padding: var(--space-lg) 0 !important;
+  padding: 0 !important;
 }
 
-/* Fix input field styling */
+/* 解密后的文章内容 - 重置所有样式 */
+#hexo-blog-encrypt {
+  text-align: left;
+}
+
+#hexo-blog-encrypt > div {
+  text-align: left !important;
+  max-width: none !important;
+}
+
+/* 解密后的内容继承文章样式 */
+.article-entry #hexo-blog-encrypt,
+.article-entry #hexo-blog-encrypt > div,
+.article-entry #hexo-blog-encrypt p,
+.article-entry #hexo-blog-encrypt h1,
+.article-entry #hexo-blog-encrypt h2,
+.article-entry #hexo-blog-encrypt h3,
+.article-entry #hexo-blog-encrypt h4,
+.article-entry #hexo-blog-encrypt h5,
+.article-entry #hexo-blog-encrypt h6,
+.article-entry #hexo-blog-encrypt ul,
+.article-entry #hexo-blog-encrypt ol,
+.article-entry #hexo-blog-encrypt li,
+.article-entry #hexo-blog-encrypt blockquote {
+  text-align: left !important;
+}
+
+/* Input container - clean layout with top line */
+.hbe-input-default {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin: var(--space-2xl) auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  width: 200px !important;
+  max-width: 200px !important;
+}
+
+/* Top decorative line */
+.hbe-input-default::before {
+  content: '' !important;
+  display: block !important;
+  width: 200px !important;
+  height: 2px !important;
+  background-color: #84AF9B !important;
+  margin-bottom: 8px !important;
+}
+
+/* Shake top line on focus */
+.hbe-input-default:focus-within::before {
+  animation: lineShake 0.5s ease !important;
+}
+
+/* Input field - transparent with bottom border only */
 .hbe-input-field-default {
-  width: 100% !important;
-  padding: var(--space-sm) var(--space-md) !important;
+  width: 200px !important;
+  padding: 8px 0 !important;
   font-size: var(--font-size-base) !important;
+  font-weight: 600 !important;
   font-family: var(--font-sans) !important;
-  color: var(--text-primary) !important;
-  background-color: var(--bg-primary) !important;
-  border: 2px solid var(--border-color) !important;
-  border-radius: var(--radius-md) !important;
+  color: #84AF9B !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid #84AF9B !important;
+  border-radius: 0 !important;
   outline: none !important;
   opacity: 1 !important;
-  margin-bottom: 0 !important;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast) !important;
-}
-
-.hbe-input-field-default:focus {
-  border-color: var(--link-color) !important;
-  box-shadow: 0 0 0 3px rgba(129, 162, 190, 0.2) !important;
-  background-color: var(--bg-primary) !important;
-}
-
-.hbe-input-field-default::placeholder {
-  color: var(--text-muted) !important;
-}
-
-/* Fix label styling */
-.hbe-input-label-default {
-  width: 100% !important;
-  position: relative !important;
   text-align: center !important;
-  padding: 0 0 var(--space-md) 0 !important;
-  pointer-events: none !important;
-  font-size: var(--font-size-base) !important;
-  color: var(--text-secondary) !important;
-  transform: none !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* Placeholder styling */
+.hbe-input-field-default::placeholder {
+  color: #84AF9B !important;
+  opacity: 0.7 !important;
+  font-weight: 600 !important;
+}
+
+/* Focus state - shake animation */
+.hbe-input-field-default:focus {
+  animation: lineShake 0.5s ease !important;
+}
+
+.hbe-input-field-default:focus::placeholder {
+  color: #84AF9B !important;
+  opacity: 1 !important;
+}
+
+/* Shake animation for lines - unique name to avoid conflicts */
+@keyframes lineShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* HIDE the label completely - we only use placeholder */
+.hbe-input-label-default {
+  display: none !important;
 }
 
 .hbe-input-label-default::before,
@@ -3583,47 +3576,43 @@ figure.highlight.has-copy-btn::before {
 }
 
 .hbe-input-label-content-default {
-  padding: 0 !important;
-  transform: none !important;
-  color: var(--text-secondary) !important;
-  font-size: var(--font-size-base) !important;
+  display: none !important;
 }
 
-/* Fix button styling */
+/* Button - minimal style */
 .hbe-button {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: auto !important;
-  min-width: 130px !important;
-  padding: var(--space-sm) var(--space-lg) !important;
-  margin: var(--space-md) auto !important;
+  display: inline-block !important;
+  padding: var(--space-sm) var(--space-xl) !important;
+  margin: var(--space-xl) auto 0 !important;
   font-size: var(--font-size-base) !important;
   font-weight: var(--font-weight-medium) !important;
   font-family: var(--font-sans) !important;
-  color: var(--bg-primary) !important;
-  background: var(--link-color) !important;
-  border: none !important;
+  color: #84AF9B !important;
+  background: transparent !important;
+  border: 2px solid #84AF9B !important;
   border-radius: var(--radius-md) !important;
-  border-bottom: none !important;
-  box-shadow: var(--shadow-sm) !important;
   cursor: pointer !important;
   text-shadow: none !important;
   text-align: center !important;
   text-indent: 0 !important;
-  transition: background-color var(--transition-fast), transform var(--transition-fast) !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease !important;
+  width: auto !important;
+  height: auto !important;
+  position: relative !important;
+  top: 0 !important;
 }
 
 .hbe-button:hover {
-  background-color: var(--link-hover) !important;
-  transform: translateY(-1px) !important;
-  box-shadow: var(--shadow-md) !important;
+  background-color: #84AF9B !important;
+  color: var(--bg-primary) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(132, 175, 155, 0.3) !important;
 }
 
 .hbe-button:active {
   transform: translateY(0) !important;
-  box-shadow: var(--shadow-sm) !important;
-  top: 0 !important;
+  box-shadow: none !important;
 }
 
 .hbe-button::after {
@@ -3635,176 +3624,6 @@ figure.highlight.has-copy-btn::before {
   color: var(--color-warning);
   margin-right: var(--space-xs);
   font-size: 0.9em;
-}
-
-/* Legacy encryption container styles (kept for compatibility) */
-#hexo-blog-encrypt,
-.encrypt-container {
-  max-width: 500px;
-  margin: var(--space-2xl) auto;
-  padding: var(--space-xl);
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  text-align: center;
-  box-shadow: var(--shadow-lg);
-}
-
-/* Enhanced state */
-.encrypt-enhanced {
-  animation: fadeIn var(--transition-base);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Encryption wrapper */
-.encrypt-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-md);
-}
-
-/* Lock icon in header */
-.encrypt-lock-icon {
-  color: var(--color-warning);
-  margin-right: var(--space-sm);
-}
-
-/* Encryption header/title */
-#hexo-blog-encrypt h1,
-.hbe-container h1,
-.encrypt-container h1,
-.hbe-header {
-  font-size: var(--font-size-xl);
-  color: var(--text-primary);
-  margin-bottom: var(--space-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-}
-
-/* Abstract/description text */
-#hexo-blog-encrypt p,
-.hbe-container p,
-.encrypt-container p,
-.hbe-abstract {
-  color: var(--text-secondary);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--space-lg);
-}
-
-/* Password form */
-#hexo-blog-encrypt form,
-.hbe-form,
-.encrypt-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  width: 100%;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-/* Password input field */
-#hexo-blog-encrypt input[type="password"],
-.hbe-input,
-.encrypt-password-input {
-  width: 100%;
-  padding: var(--space-sm) var(--space-md);
-  font-size: var(--font-size-base);
-  font-family: var(--font-sans);
-  color: var(--text-primary);
-  background-color: var(--bg-primary);
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-md);
-  outline: none;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-#hexo-blog-encrypt input[type="password"]:focus,
-.hbe-input:focus,
-.encrypt-password-input:focus {
-  border-color: var(--link-color);
-  box-shadow: 0 0 0 3px rgba(129, 162, 190, 0.2);
-}
-
-#hexo-blog-encrypt input[type="password"]::placeholder,
-.hbe-input::placeholder,
-.encrypt-password-input::placeholder {
-  color: var(--text-muted);
-}
-
-/* Submit button */
-#hexo-blog-encrypt button,
-#hexo-blog-encrypt input[type="submit"],
-.hbe-submit,
-.encrypt-submit-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-lg);
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-medium);
-  font-family: var(--font-sans);
-  color: var(--bg-primary);
-  background-color: var(--link-color);
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: background-color var(--transition-fast), transform var(--transition-fast);
-}
-
-#hexo-blog-encrypt button:hover,
-#hexo-blog-encrypt input[type="submit"]:hover,
-.hbe-submit:hover,
-.encrypt-submit-btn:hover {
-  background-color: var(--link-hover);
-  transform: translateY(-1px);
-}
-
-#hexo-blog-encrypt button:active,
-#hexo-blog-encrypt input[type="submit"]:active,
-.hbe-submit:active,
-.encrypt-submit-btn:active {
-  transform: translateY(0);
-}
-
-/* Loading state */
-.encrypt-submit-btn.is-loading,
-.hbe-submit.is-loading {
-  opacity: 0.7;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.encrypt-submit-btn.is-loading::after {
-  content: '';
-  width: 16px;
-  height: 16px;
-  border: 2px solid transparent;
-  border-top-color: currentColor;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin-left: var(--space-sm);
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 /* Error message */
