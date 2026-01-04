@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+<!-- Primary Meta Tags -->
+<title>反序列化漏洞审计流程 | Hex0rc1st&#39;s Blog</title>
+<meta name="title" content="反序列化漏洞审计流程 | Hex0rc1st&#39;s Blog">
+<meta name="description" content="这是一篇加密文章，需要密码才能查看。">
+
+<meta name="keywords" content="vulnerability, Java, deserialization">
+
+<meta name="author" content="Hex0rc1st">
+<meta name="robots" content="index, follow">
+<meta name="language" content="zh-CN">
+<link rel="canonical" href="http://example.com/2025/11/13/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1%E6%B5%81%E7%A8%8B/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://example.com/2025/11/13/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1%E6%B5%81%E7%A8%8B/">
+<meta property="og:title" content="反序列化漏洞审计流程 | Hex0rc1st&#39;s Blog">
+<meta property="og:description" content="这是一篇加密文章，需要密码才能查看。">
+
+<meta property="og:site_name" content="Hex0rc1st&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+
+  
+<meta property="article:published_time" content="2025-11-13T04:00:00.000Z">
+  
+  
+<meta property="article:modified_time" content="2025-12-31T09:26:10.702Z">
+  
+  
+<meta property="article:author" content="Hex0rc1st">
+  
+  
+    
+<meta property="article:section" content="攻击技术">
+    
+  
+  
+    
+<meta property="article:tag" content="vulnerability">
+    
+<meta property="article:tag" content="Java">
+    
+<meta property="article:tag" content="deserialization">
+    
+  
+
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="http://example.com/2025/11/13/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1%E6%B5%81%E7%A8%8B/">
+<meta name="twitter:title" content="反序列化漏洞审计流程 | Hex0rc1st&#39;s Blog">
+<meta name="twitter:description" content="这是一篇加密文章，需要密码才能查看。">
+
+
+
+
+<!-- Favicon -->
+
+  <link rel="icon" href="/favicon.jpg">
+
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- Font Awesome 6.4.0 with optimized loading -->
+
+  <!-- Hybrid: CDN with local fallback and optimized loading -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous"
+        onerror="this.onerror=null;this.href='/lib/fontawesome/css/all.min.css';this.rel='stylesheet';">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+
+
+<!-- Preconnect for performance -->
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+
+{&#34;@context&#34;:&#34;https://schema.org&#34;,&#34;@type&#34;:&#34;BlogPosting&#34;,&#34;headline&#34;:&#34;反序列化漏洞审计流程&#34;,&#34;name&#34;:&#34;反序列化漏洞审计流程 | Hex0rc1st&#39;s Blog&#34;,&#34;description&#34;:&#34;这是一篇加密文章，需要密码才能查看。&#34;,&#34;url&#34;:&#34;http://example.com/2025/11/13/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1%E6%B5%81%E7%A8%8B/&#34;,&#34;inLanguage&#34;:&#34;zh-CN&#34;,&#34;author&#34;:{&#34;@type&#34;:&#34;Person&#34;,&#34;name&#34;:&#34;Hex0rc1st&#34;},&#34;datePublished&#34;:&#34;2025-11-13T04:00:00.000Z&#34;,&#34;dateModified&#34;:&#34;2025-12-31T09:26:10.702Z&#34;,&#34;publisher&#34;:{&#34;@type&#34;:&#34;Organization&#34;,&#34;name&#34;:&#34;Hex0rc1st&#39;s Blog&#34;,&#34;logo&#34;:{&#34;@type&#34;:&#34;ImageObject&#34;,&#34;url&#34;:&#34;http://example.com/favicon.jpg&#34;}},&#34;articleSection&#34;:[&#34;攻击技术&#34;],&#34;keywords&#34;:&#34;vulnerability, Java, deserialization&#34;,&#34;mainEntityOfPage&#34;:{&#34;@type&#34;:&#34;WebPage&#34;,&#34;@id&#34;:&#34;http://example.com/2025/11/13/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1%E6%B5%81%E7%A8%8B/&#34;}}
+</script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class=" is-post">
+  <div id="container" class="site-container">
+    <header id="header" class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Site Branding -->
+      <div class="site-branding">
+        
+          <p class="site-title">
+            <a href="/" rel="home">Hex0rc1st&#39;s Blog</a>
+          </p>
+        
+        
+          <p class="site-subtitle">记录日常知识积累</p>
+        
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="切换菜单" aria-expanded="false">
+        <span class="hamburger-icon">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
+      
+      <!-- Main Navigation -->
+      <nav id="main-nav" class="main-nav" role="navigation" aria-label="主导航">
+        <ul class="nav-menu">
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                
+                  <i class="fas fa-home nav-icon"></i>
+                
+                <span class="nav-text">Home</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/archives">
+                
+                  <i class="fas fa-archive nav-icon"></i>
+                
+                <span class="nav-text">Archives</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/categories">
+                
+                  <i class="fas fa-folder nav-icon"></i>
+                
+                <span class="nav-text">Categories</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/tags">
+                
+                  <i class="fas fa-tags nav-icon"></i>
+                
+                <span class="nav-text">Tags</span>
+              </a>
+            </li>
+          
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/about">
+                
+                  <i class="fas fa-user nav-icon"></i>
+                
+                <span class="nav-text">About</span>
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+      
+      <!-- Search Form -->
+      
+        <div class="header-search">
+          <button id="search-toggle" class="search-toggle" aria-label="切换搜索">
+            <i class="fas fa-search"></i>
+          </button>
+          <div id="search-form-wrap" class="search-form-wrap">
+            <form class="search-form" role="search">
+              <label for="search-input" class="sr-only">搜索</label>
+              <input type="search" 
+                     id="search-input" 
+                     class="search-input" 
+                     placeholder="搜索文章..."
+                     autocomplete="off">
+              <button type="submit" class="search-submit" aria-label="搜索">
+                <i class="fas fa-search"></i>
+              </button>
+              <button type="button" class="search-close" aria-label="关闭搜索">
+                <i class="fas fa-times"></i>
+              </button>
+            </form>
+            <div id="search-results" class="search-results"></div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</header>
+
+    
+    <main id="main" class="site-main">
+      <div class="container">
+        
+        <div class="main-content-wrapper has-sidebar sidebar-right">
+          <div id="content" class="site-content">
+            <article class="article" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      
+        <i class="fas fa-lock post-encrypted-icon" title="加密文章"></i>
+      
+      反序列化漏洞审计流程
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      <time class="article-date" datetime="2025-11-13T04:00:00.000Z" itemprop="datePublished">
+  <i class="fa fa-calendar"></i>
+  2025年11月13日
+</time>
+
+      
+        
+
+  <span class="article-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <i class="fas fa-user"></i>
+    <span itemprop="name">Hex0rc1st</span>
+  </span>
+
+
+      
+      
+  <div class="article-category">
+    <i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF/">攻击技术</a>
+  </div>
+
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误，请重试。" data-whm="文章校验失败，请联系作者。">
+  <script id="hbeData" type="hbeData" data-hmacdigest="b1c26e812fe74420d88497ed3990988dbc357f9e3e7ff23d7b2c1682ff8030ab">e34671cb96c38a731d621079efe5a1435ed8e1b595a814f520d1e1907df450631509b295fd02ed21cd73c8d7d886dfbbc3b0ed974cf9d7e4316f5a8033a814ad9c9a7293c3f88a4632fe0c73e5fb808e3ec32faf46982ddef716dbe2c592f982ac5adba4d185ec3132e01c606b2a272bc5d1a28bfb3a45e05a45ace68cf80ea0c5e1540794d289c9a2d5f7f1b06475312f37a5491754ad54845f5e7df85de6202c7d8cdce7c4c3744aad1d5514eeb527431efa307b2d5bc5d84ca28ee34853466008a3c62ebf8aed01cde49cb722699165f954c708613a98dc4250223010c9ee003f271fff7b76ec5f6d57777e2d876c2ef6087045500ec76e150089a813007997971b8630326990f8eefd1d202cdb39ed58b261c6b5f9d901ab157838a78a65f8331b5353759671329739d5ec9d436674a253833019fa7988d0fa03bf92a8c980904c4075251b2d0359ab6cf2811de5c42253363d963cecacc8533fc7b0ddc4fb6bb6ad0354e574ed97f8448b0c4a2556e292a6ce945792b569b0ba411f0064df5e1ce3133f3c6d25208a05ccbbb2bc9e260022183beeb437bbad43a46ca3fb14581b40d154e348b0c468c3d49e40c4bbe63c090ab85c4a94392420888bdd5e79d63408808e3b84cf7d40cd6b08080db47e01b86532375291ba0b464cc9a76b307f00bffdc3e590da4eaae5e921bc28a21e061ca1e1ce917fd4acb5050d623878265390f534e046792dc0b33b6b16dca398ff5567077cc0c78ecbcd0437b6ac6206e5b5ef03432703fa1f8748a5c432d1a40c7711cc691ac586369cb137a4cde3aa7ed40f611a089d2a78efd2608130e7186c0f2a020cc938e877fa9d1a3d7fa280d6647a54cea5ee6102a7f8c164d6237d4212a866bdaa940946134df6053460a951679e18cab291a678c010c0aeb75f3191b837a1eb91372682cc674c49a22b053fe7aa9e4baec9b8aaf55b85ccfe4bd7ef541278861135c51348bf45a875f8a4164e15c508d920bf84fb690673561a038c489f7f8ef724bfea9a4fcc77183cd309e05fb5dd3749d3d0f43b03ae5e67010f9153e319e341dd6987934e16c81fa24991500a734ba11145f59cfaaf44153f890e41603a1343d2c03bbb0a79d5396373e53fcd628de181111ee206a495f453199218554f50a7e193bdbe7c7f17f26e788fb305af165d99206bd6c72acad0a579f01545839e57eb3d8dd2ee55c5f368cdd3a8d7f37f043d68e67005819d8238619c294c1bab643421ba73b998a5e08c42db1a643aac16e0062f737584e4363c1f4562218dd5d64e4c8c4f3c5bbe21976520a2faf75a83482a04fa8ddb47e5a0eab63ccfba5f9e7ff2be82cdc2b9b08c519b302a60b6be9b0f3afd5c117cf03c2c3488a3cc18ef44775c24c36731483a01b1f1b833fc12789ad7d9b4ff80c0fa108fe738014362cf8bff8f9b102282312a7ef2c4265194773695f56d6ab72b27535bcf1c7daef5a09cfc683385ed926191418848a116df7a025c4b17e4826bb32f3a8c982684abac6e49fa6fc25a06c86476871c85ed20d80bea1a219db022bee5e73b6bdcf14aa515c00738fd171f6f7d56d73e4b0460ea66e7a10f6bd7af01ed02d7ba7fc7072c5591a902c84e5e4a168f3e57283f42ddc9b9a5d24e6e7f09c783cd507257f43050d601020b06a7ad47b6bf3fba14a0acdb05a3636cb0b018257306d575582609254850cc372b242463101384f7ac55c7f6feb2926c7fdb78082ffb621bd481c9cb16723b424012ecc94f61a0cdf3e3eb7b0d8cbfd21554a1497014eeb0d7b547a1d976ed773229d77b506444d93dde80bac61b4387d666cdee1689758db867d7b2a102c4a58de8a0bb78817f3f5aeb00c8afa504f6f7671dcda0f0483b2f33bfe8779e8a9972393ba0075e3df193f585542158fda1ecba7c99ec4df212336f6bd83ba65338366403a9a5eeebdd5263e95377e05255c79db95d927262390686c3f37f7c8f8339357e1a61b2c72d0980750efc38b6cb0a5b6ff91a49be1c653a59e3d57b8d56e5533e77c369f08f7e4519d1a0ed12933f61a60014489137cb7440d46b8db4e27697fa88232783c8dc99eb9b3c0c6dbe816bc1d733e60bf0cf5bfaf107b5b704d95f0cca6cf17149a6cc91c279cfd653e62125ac98fdaffb1396b9d1cd36f510603eefe3e4e3b3922d3732d72bbc286231d7588716b2f445aaea53b18039136f84faac3494f3aca9bb14781e370a00db9aa185bd11c750acdacc633e6932ca6751f43dd9ee92ae2b0fcb9045f9dd9faacf724cf876e08f1a20cfdd0d6baca5cebe922405beaaaa2ac0303a1b5fc746a887fb11215b78b7da4ff004667e3790277435fda3862ed5bf41583ca74d5e33cb96906b617b9ca0bc93a5b3a33d9965cf86de16b50ca80ec5ec9e202065b03bf12a61d1a8d973229bf0c1bd81316ae31dfd62091182a91f260f6da0e9df5566c53566b489d95a6814600043ae0d3ac90a26c8b0b4ab15682ebc237a5a2e05c88a38aa49c77d094a1fb2111daedb96d2f8d7f7647e9387beb7761117e279f29d60ef05e8d0ff4ac6ee193892c6cafe71b52adf107599cf5ada64190ca4ba43ed93e08acd7e8adc692b1f96ee7c89eae72743f5a32fdbf9eb166b8309a23994e2cb226abab4edb184dd8633952a8c014c3b003f54c0196f002d3f00969f38cafd7c1da931d7259d69ee1571574a6a10348e28cc75ee3aeaadec124d78060b3f256b55f7cf3721b6840a7319bf08ac011d99c45b741938f2f3dedabcce65e5e7255d5a89ac4ad9e90521015dcd59de81264c856eddb2b804bfc6d626176ecd31a7ae0cf1ec1aee52ef8f8cea2c9c2da4cf0ac222aa27602a7894172eac0c786e0799dffaebb1be0cb01d0cce4fbae772edcb2bd72fed16046f0141c1bc23f6b82bd44255b2a18e82e89123554836977a822aeba11c1cc663ae4e8c192e8751c28180a7865f37be3a26baf1ac583e62c37ca8c4711c125377ace487ab67bae3f88ff05dc57d241baf9540471ef3391e1f8fa359b09544042db5107d81d9b827a93dc280ddb95056886544da212c113a964f5c756507d92ae17b882f26c3d7030c4a79af7bb2885fa79e91e030aac0dfcbee99e634eb490ca2bca9644b1117dc9d167788e9e354ed1ac8f0f0cd4700af55a483cbeb8f2ef331cd5768d799bfe9c49d7fd3f6bb2550f45ed283b14d4f5a93ae41e390d2353fa7ca214892b3273d0b1892401abe610e5fe62ab686f04c79cd3f89be3bb2a92281d3865deb7d1c4cd7dc1dcfb569b0fb941a147eb3085b46fbc57d53264828aeb57aeff95cc542ae43524ab212bea2c1945f3ed339de1f7218ec54082e4e7139743d59529fb74ad4c36be630a902abd15e77295342a5c0473d731081c4a24bc96e744e0a630730adcc4bce95eae926343e64687ba5462790a473be3c892eed29c4f3eaa81351ac2b41a8430dabc79d422e68fb80786388780a4b5fe070181ce9a3cfcfb487eb199529b261723d66b782ff6ddfcc0b14593ceaccbd7ed4c5f9c775dd2d8a833943db79d9b08f3ac36edb070780238cc26e1021eb5243cc5c14c56f3bea20dec9b475c1f84e09056a46187762817bc4f5603e1865a8f0e2c2b016c7fe3e5bb7275014b9cf072417c10462e5f1db84b148fc118e9739cd2c3e0fdf68048d866a9f70c746c32654a61fd56ddd76f37fe283e1198751f1f4e7899ad254de287981fc9b1265620543aac14c1c8e24530323f37cf6c18de36f96c4081d4eec55ef89fab757d3d562332aafb5eb517a9da12d886f7f3193703a338dd0bd30c5189267760d21311fb6fad22684e76269316106a257c620fe4ffb5274766daa261d0dad11f52683eb4ccb99c8324c671687c16372ef5e9b1be0f9df3588bafbca2525fa79529a95e7d10d7fc189623d33fe223ac5e0478e02ffe98ea6fb629fb82c38f2f4149e9156dca8959a65eea6a9c5c09252d07105186216d30bcfec6a68e84c2fa2aaa8b17bc6c765c56875446d994edf7c0b32f55d00fa3895e129e3e8c1735f6837bd2efa4916799e5689ac241438d6a1fd2c3146a20d1838b079358dad95927d56a48230adec2ee5cfc81057cdfc58560cfbb583af66ad1de027c2ef6fea3605afb89afda8d4b53928eb40664049d11f77d7286a7611e24e950abff2d8036839a8616863a2ca31508228da7e31bada78dc5ce0156985ef91db9fadf027b489e9967881aef29e281c21492608bc5e75a9a32b5f8132c383ec7dd975b5b72de35bdd6ddde4901d</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">请输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+      
+    </div>
+    <footer class="article-footer">
+      
+  <div class="article-tags">
+    <i class="fa fa-tags"></i>
+    <a class="article-tag-none-link" href="/tags/Java/" rel="tag">Java</a> <a class="article-tag-none-link" href="/tags/deserialization/" rel="tag">deserialization</a> <a class="article-tag-none-link" href="/tags/vulnerability/" rel="tag">vulnerability</a>
+  </div>
+
+
+      
+        <div class="article-taxonomy">
+          
+            <div class="article-categories-list">
+              <i class="fas fa-folder"></i>
+              <span class="taxonomy-label">分类:</span>
+              
+                <a href="/categories/%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF/" class="category-link">攻击技术</a>
+              
+            </div>
+          
+          
+            <div class="article-tags-list">
+              <i class="fas fa-tags"></i>
+              <span class="taxonomy-label">标签:</span>
+              
+                <a href="/tags/vulnerability/" class="tag-link">vulnerability</a><span class="separator">,</span>
+              
+                <a href="/tags/Java/" class="tag-link">Java</a><span class="separator">,</span>
+              
+                <a href="/tags/deserialization/" class="tag-link">deserialization</a>
+              
+            </div>
+          
+        </div>
+      
+    </footer>
+  </div>
+  
+    
+  <nav id="article-nav" class="article-nav">
+    
+      <a href="/2025/12/20/%E5%B8%86%E8%BD%AFFineReport-Export-excel-%E6%9C%AA%E6%8E%88%E6%9D%83SQL%E6%B3%A8%E5%85%A5%E8%87%B4%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/" class="article-nav-link article-nav-newer">
+        <span class="article-nav-icon">
+          <i class="fas fa-chevron-left"></i>
+        </span>
+        <span class="article-nav-content">
+          <span class="article-nav-caption">上一篇</span>
+          <span class="article-nav-title">
+            
+              帆软FineReport Export/excel 未授权SQL注入致远程代码执行漏洞
+            
+          </span>
+        </span>
+      </a>
+    
+    
+      <a href="/2025/09/30/TongWeb-ejb%E6%9C%8D%E5%8A%A1%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E8%87%B4%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/" class="article-nav-link article-nav-older">
+        <span class="article-nav-content">
+          <span class="article-nav-caption">下一篇</span>
+          <span class="article-nav-title">
+            
+              TongWeb ejb服务反序列化致远程代码执行漏洞分析
+            
+          </span>
+        </span>
+        <span class="article-nav-icon">
+          <i class="fas fa-chevron-right"></i>
+        </span>
+      </a>
+    
+  </nav>
+
+
+  
+</article>
+
+
+          </div>
+          
+          
+            <aside id="sidebar" class="sidebar">
+  
+    
+      <div class="widget widget-category">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-folder"></i>
+            分类
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="category-list">
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Security/">
+                      Security
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/Security/Web-Development/">
+                      Web Development
+                    </a>
+                    <span class="category-list-count">1</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/%E6%94%BB%E5%87%BB%E6%8A%80%E6%9C%AF/">
+                      攻击技术
+                    </a>
+                    <span class="category-list-count">3</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95/">
+                      测试
+                    </a>
+                    <span class="category-list-count">2</span>
+                  </li>
+                
+                  <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90/">
+                      漏洞分析
+                    </a>
+                    <span class="category-list-count">3</span>
+                  </li>
+                
+              </ul>
+            
+          </div>
+        
+      </div>
+    
+      <div class="widget widget-tag">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-tags"></i>
+            标签
+          </h3>
+          <div class="widget-content">
+            
+              <div class="tag-cloud">
+                
+                  <a class="tag-cloud-link" href="/tags/Best-Practices/" 
+                     style="font-size: 14px;">
+                    #Best Practices
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Java/" 
+                     style="font-size: 20px;">
+                    #Java
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Security/" 
+                     style="font-size: 14px;">
+                    #Security
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/Web-Development/" 
+                     style="font-size: 14px;">
+                    #Web Development
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/deserialization/" 
+                     style="font-size: 14px;">
+                    #deserialization
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/test/" 
+                     style="font-size: 14px;">
+                    #test
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/vulnerability/" 
+                     style="font-size: 20px;">
+                    #vulnerability
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/%E5%8A%A0%E5%AF%86/" 
+                     style="font-size: 14px;">
+                    #加密
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" 
+                     style="font-size: 18px;">
+                    #反序列化
+                  </a>
+                
+                  <a class="tag-cloud-link" href="/tags/%E6%B5%8B%E8%AF%95/" 
+                     style="font-size: 14px;">
+                    #测试
+                  </a>
+                
+              </div>
+            
+          </div>
+        
+      </div>
+    
+      <div class="widget widget-archive">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-archive"></i>
+            archives
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="archive-list">
+                
+                
+                  
+                  <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archives/2025/12">
+                      2025/12
+                    </a>
+                    <span class="archive-list-count">4</span>
+                  </li>
+                
+                  
+                  <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archives/2025/11">
+                      2025/11
+                    </a>
+                    <span class="archive-list-count">1</span>
+                  </li>
+                
+                  
+                  <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archives/2025/09">
+                      2025/09
+                    </a>
+                    <span class="archive-list-count">1</span>
+                  </li>
+                
+                  
+                  <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archives/2025/06">
+                      2025/06
+                    </a>
+                    <span class="archive-list-count">1</span>
+                  </li>
+                
+                  
+                  <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archives/2024/07">
+                      2024/07
+                    </a>
+                    <span class="archive-list-count">1</span>
+                  </li>
+                
+                  
+                  <li class="archive-list-item">
+                    <a class="archive-list-link" href="/archives/2022/11">
+                      2022/11
+                    </a>
+                    <span class="archive-list-count">1</span>
+                  </li>
+                
+              </ul>
+              <a class="archive-all-link" href="/archives">
+                查看全部 <i class="fas fa-arrow-right"></i>
+              </a>
+            
+          </div>
+        
+      </div>
+    
+      <div class="widget widget-recent_posts">
+        
+          <h3 class="widget-title">
+            <i class="fas fa-clock"></i>
+            最新文章
+          </h3>
+          <div class="widget-content">
+            
+              <ul class="recent-posts-list">
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/31/test-image/">
+                      
+                      测试图片显示
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-31T04:00:00.000Z">
+                      12-31
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/30/encrypted-test-post/">
+                      
+                        <i class="fas fa-lock" title="已加密"></i>
+                      
+                      加密测试文章
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-30T04:00:00.000Z">
+                      12-30
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/27/web-security-best-practices/">
+                      
+                      Web Security Best Practices
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-27T08:45:00.000Z">
+                      12-27
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/12/20/%E5%B8%86%E8%BD%AFFineReport-Export-excel-%E6%9C%AA%E6%8E%88%E6%9D%83SQL%E6%B3%A8%E5%85%A5%E8%87%B4%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/">
+                      
+                        <i class="fas fa-lock" title="已加密"></i>
+                      
+                      帆软FineReport Export/excel 未授权SQL注入致远程代码执行漏洞
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-12-20T04:00:00.000Z">
+                      12-20
+                    </time>
+                  </li>
+                
+                  <li class="recent-posts-item">
+                    <a class="recent-posts-link" href="/2025/11/13/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%AE%A1%E8%AE%A1%E6%B5%81%E7%A8%8B/">
+                      
+                        <i class="fas fa-lock" title="已加密"></i>
+                      
+                      反序列化漏洞审计流程
+                    </a>
+                    <time class="recent-posts-date" datetime="2025-11-13T04:00:00.000Z">
+                      11-13
+                    </time>
+                  </li>
+                
+              </ul>
+            
+          </div>
+        
+      </div>
+    
+  
+</aside>
+
+          
+        </div>
+      </div>
+    </main>
+    
+    <footer id="footer" class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Footer Info Section -->
+      <div class="footer-section footer-info">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">Hex0rc1st&#39;s Blog</a>
+          
+            <p class="footer-description">Hacker, Trader, Quantifier, Player, Chef</p>
+          
+        </div>
+      </div>
+      
+      <!-- Footer Links Section -->
+      <div class="footer-section footer-links">
+        <h4 class="footer-title">快速链接</h4>
+        <ul class="footer-menu">
+          
+            <li><a href="/">Home</a></li>
+          
+            <li><a href="/archives">Archives</a></li>
+          
+            <li><a href="/categories">Categories</a></li>
+          
+            <li><a href="/tags">Tags</a></li>
+          
+            <li><a href="/about">About</a></li>
+          
+        </ul>
+      </div>
+      
+      <!-- Footer Social Section -->
+      
+        <div class="footer-section footer-social">
+          <h4 class="footer-title">关注我们</h4>
+          <div class="social-links">
+            
+              <a href="https://github.com" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 aria-label="GitHub">
+                
+                  <i class="fab fa-github"></i>
+                
+                <span class="social-name">GitHub</span>
+              </a>
+            
+              <a href="https://twitter.com" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="social-link"
+                 aria-label="Twitter">
+                
+                  <i class="fab fa-twitter"></i>
+                
+                <span class="social-name">Twitter</span>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2025 
+        <a href="/">Hex0rc1st</a>. 
+        版权所有
+      </div>
+      <div class="footer-powered">
+        由 
+        <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a>
+        <span class="separator">|</span>
+        主题: 
+        <a href="#" target="_blank" rel="noopener noreferrer">Dark Tech</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  
+  
+
+<!-- jQuery 3.6.0 -->
+
+  <!-- Hybrid: CDN with local fallback -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>window.jQuery || document.write('<script src="/lib/jquery/jquery-3.6.0.min.js"><\/script>')</script>
+
+
+<!-- Main Script -->
+
+<script src="/js/main.js"></script>
+
+
+
+  
+<script src="/js/search.js"></script>
+
+
+
+
+  
+<script src="/js/encryption.js"></script>
+
+  
+<script src="/js/encryption-fix.js"></script>
+
+
+
+
+
+</body>
+</html>
