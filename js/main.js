@@ -298,3 +298,94 @@
   });
 
 })(jQuery);
+
+
+// ============================================
+// Image Lightbox - 图片点击放大
+// ============================================
+
+(function() {
+  'use strict';
+  
+  // 创建 lightbox 容器
+  var lightbox = document.createElement('div');
+  lightbox.className = 'img-lightbox';
+  lightbox.innerHTML = `
+    <img src="" alt="放大图片">
+    <div class="img-lightbox-toolbar">
+      <a class="img-lightbox-btn" id="lightbox-open-new" href="" target="_blank">在新标签页打开原图</a>
+      <button class="img-lightbox-btn" id="lightbox-close">关闭 (ESC)</button>
+    </div>
+    <div class="img-lightbox-info" id="lightbox-info"></div>
+  `;
+  document.body.appendChild(lightbox);
+  
+  var lightboxImg = lightbox.querySelector('img');
+  var openNewBtn = document.getElementById('lightbox-open-new');
+  var closeBtn = document.getElementById('lightbox-close');
+  var infoDiv = document.getElementById('lightbox-info');
+  
+  // 关闭 lightbox 函数
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  
+  // 点击文章中的图片放大
+  document.addEventListener('click', function(e) {
+    var target = e.target;
+    
+    // 检查是否点击了文章中的图片
+    if (target.tagName === 'IMG' && target.closest('.article-entry')) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      var imgSrc = target.src;
+      lightboxImg.src = imgSrc;
+      openNewBtn.href = imgSrc;
+      
+      // 获取图片原始尺寸
+      var tempImg = new Image();
+      tempImg.onload = function() {
+        var w = tempImg.naturalWidth;
+        var h = tempImg.naturalHeight;
+        infoDiv.textContent = '原始尺寸: ' + w + ' × ' + h + ' 像素';
+        
+        // 如果图片分辨率较低，显示提示
+        if (w < 1000) {
+          infoDiv.textContent += ' (提示: 图片分辨率较低，可能在高清屏幕上显示模糊)';
+        }
+      };
+      tempImg.src = imgSrc;
+      
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+  
+  // 点击 lightbox 背景关闭（但不包括工具栏）
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox || e.target === lightboxImg) {
+      closeLightbox();
+    }
+  });
+  
+  // 关闭按钮
+  closeBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    closeLightbox();
+  });
+  
+  // 阻止工具栏点击冒泡
+  openNewBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+  
+  // ESC 键关闭
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
+  });
+})();

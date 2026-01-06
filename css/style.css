@@ -2007,6 +2007,84 @@ a.article-title:hover {
   height: auto;
   border-radius: var(--radius-md);
   margin: var(--space-md) 0;
+  cursor: zoom-in;
+  transition: transform var(--transition-fast);
+}
+
+/* 图片点击放大 - Lightbox 效果 */
+.img-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: zoom-out;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.img-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.img-lightbox img {
+  max-width: 95vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  /* 确保图片清晰显示 */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Lightbox 工具栏 */
+.img-lightbox-toolbar {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+}
+
+.img-lightbox-btn {
+  padding: var(--space-xs) var(--space-md);
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  transition: background 0.2s ease;
+  text-decoration: none;
+}
+
+.img-lightbox-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.img-lightbox-btn:visited {
+  color: #fff;
+}
+
+/* 图片尺寸提示 */
+.img-lightbox-info {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-size-xs);
+  margin-top: var(--space-sm);
 }
 
 .article-entry table {
@@ -3926,16 +4004,24 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizeLegibility;
 }
 
-/* Optimize image rendering */
+/* Optimize image rendering - 保持图片清晰 */
 img {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
-/* Smooth image scaling */
+/* 文章图片保持高质量渲染 */
 .post-card img,
 .article-entry img {
-  image-rendering: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+}
+
+/* Lightbox 图片保持最高质量 */
+.img-lightbox img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
 }
 
 /* ============================================
